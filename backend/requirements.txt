@@ -1,0 +1,4 @@
+bottle
+pylint
+psycopg2-binary
+sqlalchemy
