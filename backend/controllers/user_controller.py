@@ -1,5 +1,4 @@
 from bottle import Bottle, request
-from .base_controller import BaseController
 from services.user_service import UserService
 
 class UserController(BaseController):
