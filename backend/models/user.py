@@ -10,3 +10,4 @@ class User(Base):
     Name = Column(String, index=True)
     Login = Column(VARCHAR(100), unique=True)
     Password = Column(VARCHAR(255))
+    Phone = Column(VARCHAR(20))

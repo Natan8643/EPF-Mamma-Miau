@@ -1,53 +1,57 @@
-from bottle import Bottle, request
-from services.user_service import UserService
+from bottle import Bottle, request, route, response
+from security.jwt_utils import role_required
 
-class UserController(BaseController):
+
+class UserController():
     def __init__(self, app):
-        super().__init__(app)
-
+        self.app = app
         self.setup_routes()
-        self.user_service = UserService()
 
 
-    # Rotas User
+    
     def setup_routes(self):
-        self.app.route('/users', method='GET', callback=self.list_users)
-        self.app.route('/users/add', method=['GET', 'POST'], callback=self.add_user)
-        self.app.route('/users/edit/<user_id:int>', method=['GET', 'POST'], callback=self.edit_user)
-        self.app.route('/users/delete/<user_id:int>', method='POST', callback=self.delete_user)
+        
+        @route('/register', method='POST')    
+        def register():
+            data = request.json
+            login = data.get('login')
+            phone = data.get('phone')
+            password = data.get('password')
+            role = data.get('role', 'user')
 
+            if login or not password:
+                response.status = 400
+                return {"error": "login e password são obrigatórios"}
+            
+            user = creat_user(login=login, password=password, role=role, phone=phone)
+            if user:
+                response.status = 201
+                return {"message":"Criado com sucesso", "user_id": user.id}
+            else:
+                response.status = 500
+                return {"error": "erro ao criar usuario"}
+        
+        @route('/login', method='POST')
+        def login():
+            data = request.json
+            login = data.get('login')
+            password = data.get('password')
 
-    def list_users(self):
-        users = self.user_service.get_all()
-        return self.render('users', users=users)
+            token = validate_login(login=login, password=password)
 
+            if token:
+                return {"token", token}
+            response.status = 401
 
-    def add_user(self):
-        if request.method == 'GET':
-            return self.render('user_form', user=None, action="/users/add")
-        else:
-            # POST - salvar usuário
-            self.user_service.save()
-            self.redirect('/users')
+            return {"error": "Credenciais invalidas"}
+        
 
-
-    def edit_user(self, user_id):
-        user = self.user_service.get_by_id(user_id)
-        if not user:
-            return "Usuário não encontrado"
-
-        if request.method == 'GET':
-            return self.render('user_form', user=user, action=f"/users/edit/{user_id}")
-        else:
-            # POST - salvar edição
-            self.user_service.edit_user(user)
-            self.redirect('/users')
-
-
-    def delete_user(self, user_id):
-        self.user_service.delete_user(user_id)
-        self.redirect('/users')
-
-
-user_routes = Bottle()
-user_controller = UserController(user_routes)
+        @route('/user')
+        @role_required('user')
+        def hello():
+            return {"message": f"Rota de user"}
+        
+        @route('/adim')
+        @role_required('admin')
+        def hello_admin():
+            return {"message": f"Rota de admin"}

@@ -7,6 +7,8 @@ CREATE TABLE [User] (
     Login VARCHAR(100) UNIQUE,
     Password VARCHAR(255), -- Armazena hash da senha
     INDEX idx_name (Name)
+    Phone VARCHAR(20)
+
 );
 
 -- Tabela de status de pedidos
