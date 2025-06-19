@@ -13,19 +13,21 @@ Fornecer uma base simples, extensível e didática para construção de aplicaç
 ## 🗂 Estrutura de Pastas
 
 ```bash
-poo-python-bottle-template/
-├── app.py # Ponto de entrada do sistema
-├── config.py # Configurações e caminhos do projeto
-├── main.py # Inicialização da aplicação
-├── requirements.txt # Dependências do projeto
-├── README.md # Este arquivo
-├── controllers/ # Controladores e rotas
-├── models/ # Definição das entidades (ex: User)
-├── services/ # Lógica de persistência (JSON)
-├── views/ # Arquivos HTML (Bottle Templating)
-├── static/ # CSS, JS e imagens
-├── data/ # Arquivos JSON de dados
-└── .vscode/ # Configurações opcionais do VS Code
+EPF-OO/
+├── backend/
+│   ├── app.py                # Ponto de entrada do sistema
+│   ├── config.py             # Configurações e caminhos do projeto
+│   ├── main.py               # Inicialização da aplicação
+│   ├── requirements.txt      # Dependências do projeto
+│   ├── controllers/          # Controladores e rotas
+│   ├── models/               # Definição das entidades (ex: User)
+│   ├── services/             # Lógica de persistência (JSON)
+│   ├── data/                 # Arquivos JSON de dados
+│   └── .vscode/              # Configurações opcionais do VS Code
+├── frontend/
+│   ├── static/               # CSS, JS e imagens
+│   └── views/                # Arquivos HTML (Bottle Templating)
+├── README.md                 # Este arquivo
 ```
 
 ---
