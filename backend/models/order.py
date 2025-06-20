@@ -10,7 +10,7 @@ class Order(Base):
     UserID = Column(Integer, ForeignKey('user.UserID'), nullable=False)
     TotalAmount = Column(Numeric(19, 4))
     OrderDate = Column(DateTime, nullable=False)
-    OrderStatusID = Column(Integer, ForeignKey('orderstatus.OrderStatusID'), nullable=True)
+    OrderStatusID = Column(Integer, ForeignKey('orderstatus.orderstatusid'), nullable=True)
 
     # Relacionamentos
     user = relationship('User', backref='orders')

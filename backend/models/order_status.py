@@ -5,5 +5,5 @@ from config import Base
 class OrderStatus(Base):
     __tablename__ = 'orderstatus'
 
-    OrderStatusID = Column(Integer, primary_key=True)
-    Name = Column(String, unique=True, nullable=False)
+    orderstatusid = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, nullable=False)

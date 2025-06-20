@@ -29,11 +29,17 @@ class OrderService:
         total_amount = 0
         product_to_map = {p.ProductID: p for p in products}
         
+        """
+            {
+                1: <Product ProductID=1, Name="Pizza", Price=30>,
+                5: <Product ProductID=5, Name="Refrigerante", Price=5>
+            }
+        """
         for item in items:
-            product = product_to_map[item['product_id']]
+            product = product_to_map[item['product_id']] #product_to_map[1] = {1: <Product ProductID=1, Name="Pizza", Price=30>} 
             total_amount += product.Price * item['quantity']
 
-        order = Order(UserID=user_id, TotalAmount=total_amount, OrderDate=datetime.utcnow())
+        order = Order(UserID=user_id, TotalAmount=total_amount, OrderDate=datetime.utcnow(), OrderStatusID=1)
 
         for item in items:
             line = OrderLine(
