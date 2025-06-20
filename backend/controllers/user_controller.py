@@ -1,57 +1,81 @@
 from bottle import Bottle, request, route, response
 from security.jwt_utils import role_required
+from services.user_service import UserService
+from config import SessionLocal
 
+user_routes = Bottle()
 
 class UserController():
     def __init__(self, app):
         self.app = app
         self.setup_routes()
-
-
     
     def setup_routes(self):
         
-        @route('/register', method='POST')    
+        @user_routes.post('/register')    
         def register():
             data = request.json
             login = data.get('login')
             phone = data.get('phone')
+            name = data.get('name')
             password = data.get('password')
             role = data.get('role', 'user')
 
-            if login or not password:
+            print(f'{login} e {password}')
+
+            if not login or not password:
                 response.status = 400
                 return {"error": "login e password são obrigatórios"}
             
-            user = creat_user(login=login, password=password, role=role, phone=phone)
+            db = SessionLocal()
+            user_service = UserService(db)
+            user = user_service.create_user(name=name, login=login, password=password, role=role, phone=phone)
+            
             if user:
+                userId =user.UserID
+                db.close()
                 response.status = 201
-                return {"message":"Criado com sucesso", "user_id": user.id}
+                return {"message":"Criado com sucesso", "user_id": userId}
             else:
+                db.close()
                 response.status = 500
                 return {"error": "erro ao criar usuario"}
         
-        @route('/login', method='POST')
+        @user_routes.post('/login')
         def login():
             data = request.json
             login = data.get('login')
             password = data.get('password')
 
-            token = validate_login(login=login, password=password)
+            if not login or not password:
+                response.status = 400
+                return {"error": "Login e senha são obrigatórios"}
 
+            db = SessionLocal()
+            user_service = UserService(db)
+            token = user_service.validate_login(login, password)
+            db.close()
+            
             if token:
-                return {"token", token}
-            response.status = 401
+                return {"token": token}
 
-            return {"error": "Credenciais invalidas"}
+            response.status = 401
+            return {"error": "Credenciais inválidas"}
         
 
-        @route('/user')
+        @user_routes.get('/user')
         @role_required('user')
         def hello():
             return {"message": f"Rota de user"}
         
-        @route('/adim')
+        @user_routes.get('/adim')
         @role_required('admin')
         def hello_admin():
             return {"message": f"Rota de admin"}
+        
+        @user_routes.get('/teste')
+        def hello_mundo():
+            return {"message": f"hello world"}
+
+UserController(user_routes)
+

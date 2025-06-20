@@ -1,7 +1,5 @@
-from sqlalchemy import Column, Integer, String, VARCHAR, Index, UniqueConstraint
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from sqlalchemy import Column, Integer, String, VARCHAR
+from config import Base
 
 class User(Base):
     __tablename__ = 'user'
@@ -11,3 +9,4 @@ class User(Base):
     Login = Column(VARCHAR(100), unique=True)
     Password = Column(VARCHAR(255))
     Phone = Column(VARCHAR(20))
+    Role = Column(String, default='user')

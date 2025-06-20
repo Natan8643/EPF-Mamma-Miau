@@ -3,4 +3,4 @@ pylint
 psycopg2-binary
 sqlalchemy
 PyJWT
-bcrypt
+passlib[bcrypt]

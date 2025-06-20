@@ -1,10 +1,14 @@
 from bottle import Bottle
-from config import Config
+from config import Config, engine, Base
+import models
 
 class App:
     def __init__(self):
         self.bottle = Bottle()
         self.config = Config()
+
+    def setup_database(self):
+        Base.metadata.create_all(engine)
 
 
     def setup_routes(self):
@@ -15,6 +19,7 @@ class App:
 
 
     def run(self):
+        self.setup_database()
         self.setup_routes()
         self.bottle.run(
             host=self.config.HOST,
