@@ -65,12 +65,12 @@ class UserController():
 
         @user_routes.get('/user')
         @role_required('user')
-        def hello():
+        def hello(user_id):
             return {"message": f"Rota de user"}
         
-        @user_routes.get('/adim')
+        @user_routes.get('/admin')
         @role_required('admin')
-        def hello_admin():
+        def hello_admin(user_id):
             return {"message": f"Rota de admin"}
         
         @user_routes.get('/teste')

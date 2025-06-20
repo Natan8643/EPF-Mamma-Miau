@@ -34,7 +34,7 @@ class UserService:
 
         payload = {
             "user_id": user.UserID,
-            "role": user.role,
+            "role": user.Role,
             "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=2)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
