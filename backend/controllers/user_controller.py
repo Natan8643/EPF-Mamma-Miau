@@ -1,4 +1,4 @@
-from bottle import Bottle, request, route, response
+from bottle import Bottle, request, response
 from security.jwt_utils import role_required
 from services.user_service import UserService
 from config import SessionLocal

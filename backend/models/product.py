@@ -6,5 +6,6 @@ class Product(Base):
     __tablename__ = 'product'
 
     ProductID = Column(Integer, primary_key=True)
-    Name = Column(String(200), unique=True, nullable=False)
+    Category = Column(String(50))
+    Name = Column(String(200), nullable=False)
     Price = Column(Numeric(19, 4), nullable=False)
