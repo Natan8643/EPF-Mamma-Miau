@@ -8,6 +8,19 @@ class OrderService:
     def __init__(self, db: Session):
         self.db = db
 
+    def get_all_orders(self, user_id):
+        orders = self.db.query(Order).filter_by(UserID=user_id).all()
+
+        return [self.serialize_product(order) for order in orders]
+
+    def serialize_product(self, order):
+        return {
+            "order_id": order.OrderID,
+            "total_amount": float(order.TotalAmount),
+            "order_date": order.OrderDate.strftime('%d/%m/%Y %H:%M'),
+            "status": order.OrderStatusID,
+        }
+
     def create_order(self, user_id, items: list):
 
         """

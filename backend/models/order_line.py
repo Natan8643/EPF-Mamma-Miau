@@ -11,5 +11,5 @@ class OrderLine(Base):
     Quantity = Column(Integer, nullable=False)
 
     # Relacionamentos
-    order = relationship('Order', backref='order_lines')
+    #order = relationship('Order', back_populates='lines')
     product = relationship('Product', backref='order_lines')

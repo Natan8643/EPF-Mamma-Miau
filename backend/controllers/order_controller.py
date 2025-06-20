@@ -1,6 +1,6 @@
 from bottle import Bottle, request, response
 from security.jwt_utils import role_required
-from services.product_service import ProductService
+from services.order_service import OrderService
 from config import SessionLocal
 
 order_routes = Bottle()
@@ -12,41 +12,47 @@ class OrderController():
 
     def setup_routes(self):
 
-        @order_routes.get('/products')
+        
+        @order_routes.get('/orders')
         @role_required('user')
-        def get_my_order(user_id):
+        def get_my_orders(user_id):
 
             db = SessionLocal()
-            product_service = ProductService(db)
-            products = product_service.get_all_products()
+            order_service = OrderService(db)
+            orders = order_service.get_all_orders(user_id)
             db.close()
 
-            return {"products": products}
+            return {"products": orders}
+        
 
         @order_routes.post('/order')
         @role_required('user')
-        def creat_product(user_id):
+        def create_order(user_id):
             data = request.json
+            items = data.get('items')
 
-            name = data.get('name')
-            category = data.get('category')
-            price = data.get('price')
+            if not items or not isinstance(items, list):
+                response.status = 400
+                return{"erro":"Lista de itens invalida"}
+            
+            print([{"ProductID": item["product_id"], "quantity": item["quantity"]} for item in items])
 
             db = SessionLocal()
-            product_service = ProductService(db)
+            order_service = OrderService(db)
 
-            product = product_service.create_product(name=name, category=category, price=price)
-            
-            if product:
-                productId =product.ProductID
-                db.close()
-                response.status = 201
-                return {"message":"Criado com sucesso", "product_id": productId}
-            else:
-                db.close()
+            try:
+                order = order_service.create_order(user_id=user_id, items=items)
+                return {"message": "Pedido criado", "order_id": order.OrderID}
+            except ValueError as ve:
+                response.status = 400
+                return {"error": str(ve)}
+            except Exception as e:
                 response.status = 500
-                return {"error": "erro ao criar produto"}
+                return {"error": "Erro ao criar pedido"}
+            finally:
+                db.close()
+            
 
-
+            #criar outra rota pra anexar um produto ao mesmo pedido
 OrderController(order_routes)
 
