@@ -8,6 +8,40 @@ class OrderService:
     def __init__(self, db: Session):
         self.db = db
 
+    def get_all_orders(self, user_id):
+        orders = self.db.query(Order).filter_by(UserID=user_id).all()
+
+        return [self.serialize_orders(order) for order in orders]
+
+    def serialize_orders(self, order):
+        return {
+            "order_id": order.OrderID,
+            "total_amount": float(order.TotalAmount),
+            "order_date": order.OrderDate.strftime('%d/%m/%Y %H:%M'),
+            "status": order.OrderStatusID,
+        }
+
+    def get_order_by_id(self, order_id, user_id):
+        order = self.db.query(Order).filter_by(OrderID=order_id, UserID=user_id).first()
+        if not order:
+            raise ValueError("Pedido não encontrado")
+
+        return {
+            "order_id": order.OrderID,
+            "total_amount": float(order.TotalAmount),
+            "order_date": order.OrderDate.strftime('%d/%m/%Y %H:%M'),
+            "status": order.order_status.name if order.order_status else None,
+            "items": [
+                {
+                    "product_id": line.product.ProductID,
+                    "name": line.product.Name,
+                    "price": float(line.product.Price),
+                    "quantity": line.Quantity,
+                }
+                for line in order.lines
+            ]
+        }
+
     def create_order(self, user_id, items: list):
 
         """
