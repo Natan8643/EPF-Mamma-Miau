@@ -22,9 +22,18 @@ class OrderController():
             orders = order_service.get_all_orders(user_id)
             db.close()
 
-            return {"products": orders}
+            return {"orders": orders}
         
+        @order_routes.get('/order/<order_id:int>')
+        @role_required('user')
+        def get_my_order(user_id, order_id):
+            db = SessionLocal()
+            order_service = OrderService(db)
+            order = order_service.get_order_by_id(user_id=user_id, order_id=order_id)
+            db.close()
 
+            return {"order": order}
+        
         @order_routes.post('/order')
         @role_required('user')
         def create_order(user_id):
