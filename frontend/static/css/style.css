@@ -1,9 +1,11 @@
 :root {
     --verde-principal: #A0C878;
     --verde-secundario: #DDEB9D;
-    --branco-principal: #FAF6E9;
-    --branco-secundario: #FFFDF6;
+    --branco-texto: #FAF6E9;
+    --branco-fundo: #FFFDF6;
     --marrom: #544541;
+    --fonte-titulo: 'Playfair Display', serif;
+    --fonte-textos: 'Nunito Sans', sans-serif;
 }
 
 html, body {
@@ -13,37 +15,39 @@ html, body {
     overflow: hidden;
 }
 
+html {
+    overflow: auto;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../img/logos/background-login.jpg');
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/interface/background-login.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center 0;
     background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    overflow-x: hidden;
 }
 
 .caixa {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     width: 974.5px;
-    height: 805px;
-    margin: 53px 459px;
+    height: 805px; 
     background-color: #FFFDF6CC;
     border-radius: 27px;
     padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .titulo {
-    font-family: 'Playfair Display', serif;
-    font-size: 80px;
+    font-family: var(--fonte-titulo);
+    font-size: 90px;
     font-weight: 400;
     text-transform: uppercase;
     color: var(--marrom);
@@ -52,8 +56,165 @@ body {
 }
 
 form {
+    width: 974.5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 133px;
+    justify-content: center;
+}
+
+.input {
+    width: 680px;       
+    height: 80px;
+    font-size: 22px;
+    box-sizing: border-box;
+    background-color: var(--verde-principal);
+    font-family: var(--fonte-textos);
+    font-size: 25px;
+    font-weight: 500;
+    padding: 20px 20px 20px 43px;
+    border-radius: 100px;
+    border: var(--verde-principal);
+    color: var(--branco-texto);  
+}
+
+.input::placeholder {
+    color: var(--branco-texto);
+    text-transform: uppercase;
+}
+
+.input:focus {
+    outline: 2px solid var(--marrom);
+}
+
+.enviar {
+    width: 360px;
+    height: 60px;
+    font-size: 22px;
+    background-color: var(--verde-principal);
+    border: none;
+    font-family: var(--fonte-textos);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--branco-texto);
+    border-radius: 100px;
+    margin-top: -15px;
+}
+
+.enviar:hover {
+    outline: 2px solid #544541;
+    cursor: pointer;
+}
+
+.enviar:active {
+    background-color: #6A8A50;
+}
+
+.cadastro {
+    margin-top: 50px;
+    font-family: var(--fonte-textos);
+    font-size: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--marrom);   
+}
+
+.cadastro:hover {
+    text-decoration: underline;
+}
+
+.cadastro:active {
+    color: var(--verde-principal);
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+    justify-content: center;
+    margin-left: -40px;
+}
+
+ .input-wrapper {
+    position: relative;
+    width: 680px;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper .input {
+    width: 100%;
+    padding-right: 75px; 
+}
+
+.olho {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.circulo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 4px solid var(--marrom);
+}
+
+.icon1 {
+    width: 100px;
+    height: 105px;
+    object-fit: contain;
+    margin-left: 4px;
+    margin-bottom: 1px;
+}
+
+.icon2 {
+    width: 90px;
+    height: 90px;
+    margin-left: 20px;
+}
+
+.input-container:nth-child(2) {
+    gap: 12px;    
+}
+
+.senha {
+    width: auto;
+    margin-right: 12px;
+}
+
+@media (max-width: 600px) {
+    .caixa {
+        max-width: 98vw;
+        padding: 20px 2vw;
+        height: auto;
+        margin: 20px auto;
+    }
+    .titulo {
+        font-size: 40px;
+    }
+    .input, .enviar {
+        font-size: 18px;
+        height: 50px;
+    }
+    .circulo, .icon1, .icon2 {
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
+    }
+    .input-container {
+        gap: 10px;
+    }
 }

@@ -9,19 +9,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/png" href="../static/img/logos/logo.png">
 </head>
 
 <body>
     <div class="caixa">
         <h1 class="titulo">Login</h1>
-
-        <form >
-            <input type="text" class="input" required placeholder="E-mail*">
-            <input type="text" class="input" required placeholder="Senha*">
+        <form>
+            <div class="input-container">
+                <div class="circulo">
+                    <img src="../static/img/interface/logo-user.png" alt="Usuário" class="icon1">
+                </div>
+                <input type="text" class="input" required placeholder="E-mail *">
+            </div>
+            <div class="input-container">
+                <img src="../static/img/interface/cadeado.png" alt="Senha" class="icon2">
+                <div class="input-wrapper">
+                    <input type="password" class="input" id="senha" required placeholder="Senha *">
+                    <img src="../static/img/interface/olho-fechado.png" alt="Mostrar senha" class="olho"
+                        id="toggleSenha">
+                </div>
+            </div>
+            <button type="submit" class="enviar">login</button>
         </form>
+        <a href="" class="cadastro">Criar uma conta</a>
     </div>
+    <script src="../static/js/script.js"></script>
 </body>
 
 </html>
