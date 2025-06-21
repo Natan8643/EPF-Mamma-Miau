@@ -12,7 +12,6 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 html {
@@ -134,7 +133,7 @@ form {
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 16px;
+    gap: 21px;
     justify-content: center;
     margin-left: -40px;
 }
@@ -175,14 +174,13 @@ form {
     width: 100px;
     height: 105px;
     object-fit: contain;
-    margin-left: 4px;
-    margin-bottom: 1px;
+    margin-left: 5.5px;
 }
 
 .icon2 {
     width: 90px;
     height: 90px;
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 .input-container:nth-child(2) {
@@ -195,26 +193,111 @@ form {
 }
 
 @media (max-width: 600px) {
+    html, body {
+        height: 100dvh;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+        padding: 0 12px;
+    }
+
     .caixa {
-        max-width: 98vw;
-        padding: 20px 2vw;
+        width: 90vw;
+        max-height: 95vh;
         height: auto;
-        margin: 20px auto;
+        padding: 30px 20px;
+        border-radius: 20px;
+        background-color: #FFFDF6E6;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
     }
+
     .titulo {
-        font-size: 40px;
+        font-size: 32px;
+        margin-bottom: 20px;
+        text-align: center;
     }
-    .input, .enviar {
-        font-size: 18px;
-        height: 50px;
+
+    form {
+        width: 100%;
+        gap: 25px;
     }
-    .circulo, .icon1, .icon2 {
-        width: 50px !important;
-        height: 50px !important;
-        min-width: 50px !important;
-        min-height: 50px !important;
-    }
+
     .input-container {
-        gap: 10px;
+        gap: 12px;
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+
+    .input-wrapper {
+        width: 100%;
+    }
+
+    .input {
+        width: 100%;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px 40px 10px 16px;
+        border-radius: 50px;
+    }
+
+    .input-wrapper .input {
+        padding-right: 45px;
+    }
+
+    .olho {
+        width: 20px;
+        height: 20px;
+        right: 15px;
+    }
+
+    .enviar {
+        width: 80%;
+        max-width: 180px;
+        height: 35px;
+        font-size: 18px;
+        border-radius: 50px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .cadastro {
+        font-size: 18px;
+        margin-top: 25px;
+        text-align: center;
+        display: block;
+    }
+
+    .circulo {
+        width: 45px !important;
+        height: 45px !important;
+        min-width: 45px !important;
+        min-height: 45px !important;
+        outline: 2px solid var(--marrom);
+    }
+
+    .icon1 {
+        width: 45px !important;
+        height: 50px !important;
+        margin-left: 2px;
+        margin-top: 1px;        
+    }
+    
+    .icon2 {
+        width: 40px !important;
+        height: 40px !important;
+        margin-left: 0;
     }
 }
