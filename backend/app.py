@@ -1,11 +1,15 @@
 from bottle import Bottle
 from config import Config, engine, Base
 import models
+from middleware.cors import apply_cors
 
 class App:
     def __init__(self):
         self.bottle = Bottle()
         self.config = Config()
+
+        apply_cors(self.bottle)
+
 
     def setup_database(self):
         Base.metadata.create_all(engine)
