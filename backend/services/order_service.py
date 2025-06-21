@@ -3,6 +3,8 @@ from models.order import Order
 from models.product import Product
 from models.order_line import OrderLine
 from datetime import datetime
+from models.user import User
+from services.user_notification_service import UserNotificationService
 
 class OrderService:
     def __init__(self, db: Session):
@@ -45,10 +47,12 @@ class OrderService:
     def create_order(self, user_id, items: list):
 
         """
-        items = [
-            {"product_id": 1, "quantity": 2},
-            {"product_id": 5, "quantity": 1},
-        ]
+        {
+    	"items": [
+	    	{"product_id": 4, "quantity": 2},
+		    {"product_id": 6, "quantity": 2}
+	]
+}
         """
 
         if not items:
@@ -86,4 +90,52 @@ class OrderService:
         self.db.commit()
         self.db.refresh(order)
 
+        #--chama serviço de sms
+        user = self.db.query(User).filter(User.UserID == user_id).first()
+        if not user:
+            raise ValueError("Usuário não encontrado")
+        
+        notifier = UserNotificationService(name=user.Name, email=user.Login)
+        
+        try:
+            sid = notifier.notify_order_created(order.OrderID)
+        except Exception as e:
+            print(f"Erro ao enviar notificação: {e}")
         return order
+    
+    def update_order_status(self, order_id: int, new_status_id: int):
+        order = self.db.query(Order).filter(Order.OrderID == order_id).first()
+        if not order:
+            raise ValueError("Pedido não encontrado")
+        
+        order.OrderStatusID = new_status_id
+        self.db.commit()
+        self.db.refresh(order)
+        return order
+    
+    def add_product_to_order(self, user_id: int, order_id: int, product_id: int, quantity: int):
+        order = self.db.query(Order).filter_by(OrderID=order_id, UserID=user_id).first()
+        if not order:
+            raise ValueError("Pedido não encontrado")
+
+        if order.OrderStatusID != 1:
+            raise ValueError("Não é possível modificar um pedido que não está pendente")
+
+    
+        existing_line = next((line for line in order.lines if line.ProductID == product_id), None)
+        if existing_line: #Verifica se o produto já foi adicionado
+            raise ValueError("Este produto já está no pedido")
+
+        product = self.db.query(Product).filter_by(ProductID=product_id).first()
+        if not product:
+            raise ValueError("Produto inválido")
+
+        new_line = OrderLine(ProductID=product_id, Quantity=quantity)
+        order.lines.append(new_line) #Cria nova linha e adiciona
+
+        order.TotalAmount += product.Price * quantity
+
+        self.db.commit()
+        self.db.refresh(order)
+        return order
+

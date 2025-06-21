@@ -24,3 +24,7 @@ SQLALCHEMY_DATABASE_URL = "postgresql://postgres:200274@localhost/mamma-miau"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+
+SENDGRID_API_KEY = "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"
+FROM_EMAIL = "kelytonlucas3@gmail.com"
+
