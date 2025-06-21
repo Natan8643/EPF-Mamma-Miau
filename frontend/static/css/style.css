@@ -1,0 +1,59 @@
+:root {
+    --verde-principal: #A0C878;
+    --verde-secundario: #DDEB9D;
+    --branco-principal: #FAF6E9;
+    --branco-secundario: #FFFDF6;
+    --marrom: #544541;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/logos/background-login.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 0;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.caixa {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 974.5px;
+    height: 805px;
+    margin: 53px 459px;
+    background-color: #FFFDF6CC;
+    border-radius: 27px;
+    padding-top: 55px;
+}
+
+.titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--marrom);
+    text-align: center;
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 133px;
+}
