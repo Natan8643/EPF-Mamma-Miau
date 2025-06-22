@@ -42,6 +42,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    border: 1px solid #F0E4D4;
 }
 
 .titulo {
