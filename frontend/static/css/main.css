@@ -1,0 +1,31 @@
+:root {
+    --verde-principal: #A0C878;
+    --verde-secundario: #DDEB9D;
+    --branco-texto: #FAF6E9;
+    --branco-fundo: #FFFDF6;
+    --marrom: #544541;
+    --fonte-titulo: 'Playfair Display', serif;
+    --fonte-textos: 'Nunito Sans', sans-serif;
+}
+
+nav {
+    display: flex;
+    width: 217px;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--verde-principal);
+}
+
+.logo {
+    width: 155px;
+    height: 155px;
+    margin-top: 21px;
+}
+nav a {
+    margin-top: 58px;
+    text-align: center;
+    font-family: var(--fonte-textos);
+    color: var(--branco-texto);
+    
+}
