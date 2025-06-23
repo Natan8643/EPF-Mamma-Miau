@@ -64,6 +64,7 @@ form {
     align-items: center;
     gap: 60px;
     justify-content: center;
+    margin-top: 35px;
 }
 
 .input {
@@ -92,17 +93,16 @@ form {
 .enviar {
     width: 310px;
     height: 70px;
-    font-size: 22px;
+    font-size: 28px;
     background-color: var(--verde-principal);
     border: none;
     font-family: var(--fonte-textos);
     text-transform: uppercase;
     text-align: center;
-    font-size: 30px;
     font-weight: 500;
     color: var(--branco-texto);
     border-radius: 100px;
-    margin-top: 42px;
+    margin-top: 20px;
 }
 
 .enviar:hover {
@@ -146,6 +146,7 @@ form {
     width: 680px;
     display: flex;
     align-items: center;
+    margin-left: 5px;
 }
 
 .input-wrapper .input {
@@ -183,17 +184,11 @@ form {
 .icon2 {
     width: 90px;
     height: 90px;
-    margin-left: 25px;
+    margin-bottom: 10px;
+    margin-left: 5px;
 }
 
-.input-container:nth-child(2) {
-    gap: 12px;    
-}
 
-.senha {
-    width: auto;
-    margin-right: 12px;
-}
 
 /* cadastro-confirm */
 
@@ -220,15 +215,45 @@ form {
     font-weight: 400;
     text-transform: uppercase;
     text-align: center;
-    font-size: 110px;
+    font-size: 105px;
     color: var(--marrom);
-    margin-top: 55px;
+    margin-top: 20px;
+    line-height: 140px;
 }
 
 #botao-confirm {
-    margin-top: 20px;
+    margin-top: 70px;
 }
 
+/* cadastro */
+
+.input-cadastro {
+    width: 800px;
+    height: 65px;
+}
+
+.form-cadastro {
+    gap: 35px;
+    margin-top: 30px;
+}
+
+#botao-cadastro {
+    width: 290px;
+    height: 65px;
+    margin-top: 18px;
+}
+
+#login {
+    margin-top: 25px;
+}
+
+.form-cadastro .input-wrapper {
+    width: 800px;
+}
+
+.form-cadastro #senha {
+    height: 65px;
+}
 
 /* mobile */
 @media (max-width: 600px) {
@@ -363,6 +388,38 @@ form {
     .texto-cadastro {
         font-size: 32px;
         margin-top: 20px;
+    }
+
+    .form-cadastro .input-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-cadastro .input-wrapper .input {
+        width: 100%;
+        box-sizing: border-box;
+        padding-right: 45px; /* igual aos outros */
+        padding-left: 16px;  /* igual aos outros */
+        height: 45px;
+    }
+
+    .form-cadastro .olho {
+        right: 15px;
+    }
+
+    .form-cadastro .input-cadastro {
+        width: 100% !important;
+        height: 45px !important;
+        box-sizing: border-box;
+        padding-right: 45px;
+        padding-left: 16px;
+        font-size: 16px;
+    }
+
+    #botao-cadastro {
+        height: 45px;
     }
 }
 
