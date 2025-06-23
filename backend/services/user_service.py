@@ -17,7 +17,7 @@ class UserService:
             return None
 
         hashed_password = bcrypt.hash(password)
-        user = User(Name = name, Login=login, Password=hashed_password, Phone=phone, Role=role)
+        user = User(name, phone, login, hashed_password, role)
 
         self.db.add(user)
         self.db.commit()
