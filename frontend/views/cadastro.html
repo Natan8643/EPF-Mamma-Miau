@@ -20,10 +20,10 @@
         <h1 class="titulo">cadastro</h1>
         <form class="form-cadastro">
             <input type="text" class="input input-cadastro" required placeholder="Nome completo">
-            <input type="text" class="input input-cadastro" required placeholder="(DDD) Telefone">
-            <input type="text" class="input input-cadastro" required placeholder="Email">
+            <input type="tel" class="input input-cadastro" required placeholder="(DDD) Telefone" pattern="[0-9()\- ]+">
+            <input type="email" class="input input-cadastro" required placeholder="Email">
             <div class="input-wrapper">
-                <input type="password" class="input" id="senha" required placeholder="senha" >
+                <input type="password" class="input input-cadastro" id="senha" required placeholder="senha" >
                 <img src="../static/img/interface/olho-fechado.png" alt="Mostrar senha" class="olho"
                         id="toggleSenha">
             </div>
