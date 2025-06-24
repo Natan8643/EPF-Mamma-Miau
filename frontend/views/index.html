@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mamma Miau</title>
+    
     <link rel="icon" type="img/png" href="../static/img/interface/logo.png">
     <link rel="stylesheet" href="../static/css/reset.css">
     <link rel="stylesheet" href="../static/css/main.css">
@@ -13,18 +15,25 @@
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
     <nav>
         <img src="../static/img/interface/logo.png" alt="Mamma Miau Logo" class="logo">
         <a href="../views/index.html">Home</a>
-        <a href="">sobre nós</a>
+        <a href="../views/sobre_nos.html">sobre nós</a>
         <a href="">cardápio</a>
         <a href="">pedidos</a>
         <a href="">gerenciamento</a>
-        <button>status pedido</button>
+        <button id="pedidos">status pedido</button>
         <p>Mamma<br>Miau</p>
-        <button>Login</button>   
+        <button id="login-menu" onclick="window.location.href='../views/login.html'">Login</button>
     </nav>
-    
+
+    <main id="main-menu">
+        <h1>Mamma Miau</h1>
+        <h2>Sabor que ronrona</h2>
+    </main>
+    <script src="../static/js/script.js"></script>
 </body>
+
 </html>

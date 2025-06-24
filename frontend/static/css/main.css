@@ -3,29 +3,166 @@
     --verde-secundario: #DDEB9D;
     --branco-texto: #FAF6E9;
     --branco-fundo: #FFFDF6;
+    --branco-background: #F6F3EE;
     --marrom: #544541;
     --fonte-titulo: 'Playfair Display', serif;
     --fonte-textos: 'Nunito Sans', sans-serif;
+    --peso-textos: 500;
+    --peso-titulo: 400
 }
+
+html, body {
+    height: 100%; /* Garante que o body ocupe a tela toda */
+    margin: 0;
+}
+
+main {
+    position: relative; /* Fundamental para o pseudo-elemento */
+    margin-left: 210px;
+    height: 100%;
+    z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+    padding-top: 30px;
+}
+
+#main-menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/interface/pizza-home.jpg);
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8; 
+    z-index: -1; /* Envia o fundo para trás do conteúdo */
+}
+
+main h1, main h2 {
+    text-align: center;
+    color: var(--branco-texto);
+    font-family: var(--fonte-titulo);
+    font-weight: var(--peso-titulo);
+}
+
+main h1 {
+    text-transform: uppercase;
+    font-size: 80px;
+}
+
+main h2 {
+    font-size: 35px;
+    margin-top: -10px;
+}
+
+
 
 nav {
     display: flex;
-    width: 217px;
+    width: 210px;
     min-height: 100vh;
     flex-direction: column;
     align-items: center;
     background-color: var(--verde-principal);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+nav a {
+    position: relative;
+    display: inline-block;
+    color: var(--branco-texto);
+    text-decoration: none;
+    font-family: var(--fonte-textos);
+    text-transform: uppercase;
+    font-weight: var(--peso-textos);
+    font-size: 19px;
+    margin-top: 45px;
+    transition: transform 0.3s ease;
+    background-color: transparent;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--branco-texto);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+nav a:active {
+    color: var(--marrom);
+}
+
+nav a:active::after {
+    background-color: var(--marrom);
 }
 
 .logo {
-    width: 155px;
-    height: 155px;
+    width: 135px;
+    height: 135px;
     margin-top: 21px;
 }
-nav a {
-    margin-top: 58px;
+
+nav p {
     text-align: center;
-    font-family: var(--fonte-textos);
     color: var(--branco-texto);
-    
+    font-family: var(--fonte-titulo);
+    font-weight: var(--peso-titulo);
+    font-size: 30px;
+    line-height: 30px;
+    text-transform: uppercase;
+    margin-top: 25px;
+}
+
+#login-menu {
+    display: flex;
+    font-family: var(--fonte-textos);
+    font-weight: var(--peso-textos);
+    color: var(--branco-texto);
+    font-size: 20px;
+    height: 50px;
+    width: 125px;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--branco-texto);
+    margin-top: 45px;
+    transition: all 0.3s ease;
+}
+
+#login-menu:hover {
+    cursor: pointer;
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#login-menu:active {
+    border: 2px solid var(--marrom);
+    color: var(--marrom);
+}
+
+#pedidos {
+    height: 65px;
+    width: 65px;
+    margin-top: 65px;
+}
+
+#titulo-sobre {
+    color: var(--marrom);
+}
+
+#main-sobre {
+    background-color: var(--branco-background);
 }
