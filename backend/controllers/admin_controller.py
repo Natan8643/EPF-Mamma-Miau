@@ -17,9 +17,9 @@ class AdminController():
         def get_balance(user_id):
             db = SessionLocal()
             admin_service = AdminService(db)
-            total = admin_service.total_balance()
+            totals = admin_service.total_balance()
             db.close()
 
-            return {"totalAmount": total}
+            return {"balance": totals}
 
 AdminController(admin_routes)
