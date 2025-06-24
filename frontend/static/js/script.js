@@ -1,4 +1,3 @@
-// Função para mostrar/esconder senha
 document.addEventListener('DOMContentLoaded', function() {
     // Toggle de visibilidade da senha
     var senhaInput = document.getElementById("senha");
@@ -47,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnLogin.addEventListener("click", async (e) => {
             e.preventDefault();
 
-            const login = document.querySelector("#login").value;
+            const login = document.querySelector("#login-input").value;
             const password = document.querySelector("#senha").value;
 
             try {
