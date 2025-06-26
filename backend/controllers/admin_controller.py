@@ -21,5 +21,16 @@ class AdminController():
             db.close()
 
             return {"balance": totals}
+        
+        @admin_routes.get('/profit')
+        @role_required('admin')
+        def get_profit(user_id):
+            db = SessionLocal()
+            admin_service = AdminService(db)
+            profits = admin_service.profits()
+            db.close()
+
+            return {"profits": profits}
+
 
 AdminController(admin_routes)

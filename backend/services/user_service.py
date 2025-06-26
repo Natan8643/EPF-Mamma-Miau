@@ -38,4 +38,8 @@ class UserService:
             "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=2)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
-        return token
+        return {
+            "token": token,
+            "user": user
+        }
+

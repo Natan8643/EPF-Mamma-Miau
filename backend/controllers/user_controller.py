@@ -53,11 +53,15 @@ class UserController():
 
             db = SessionLocal()
             user_service = UserService(db)
-            token = user_service.validate_login(login, password)
+            validate = user_service.validate_login(login, password)
             db.close()
             
-            if token:
-                return {"token": token}
+            if validate:
+                return {
+                    "token": validate["token"],
+                    "user_id": validate["user"].UserID,
+                    "user_name": validate["user"].Name
+                }
 
             response.status = 401
             return {"error": "Credenciais inválidas"}
