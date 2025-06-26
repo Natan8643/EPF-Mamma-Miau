@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+
     // Toggle de visibilidade da senha
     var senhaInput = document.getElementById("senha");
     var olhoIcone = document.getElementById("toggleSenha");
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validação de telefone (para o cadastro)
     const telInput = document.querySelector('input[type="tel"]');
     if (telInput) {
-        telInput.addEventListener('input', function() {
+        telInput.addEventListener('input', function () {
             this.value = this.value.replace(/[^0-9\-\s]/g, '');
         });
     }
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const result = await log(login, password);
                 console.log(result);
                 localStorage.setItem('token', result.token);
-                
+
                 window.location.href = './index.html';
             } catch (error) {
                 alert("Erro: " + error.message);
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Evento de cadastro
     const formCadastro = document.querySelector('.form-cadastro');
     if (formCadastro) {
-        formCadastro.addEventListener('submit', async function(e) {
+        formCadastro.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             // Validação do telefone

@@ -30,7 +30,7 @@ body {
     background-image: url('../img/interface/background-login.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center 0;
+    background-position: center -40px;
     background-attachment: fixed;
 }
 
