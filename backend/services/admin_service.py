@@ -91,7 +91,7 @@ class AdminService:
         return order
     
     def opened_orders(self):
-        orders = self.db.query(Order).filter_by(OrderStatusID = 1).all()
+        orders = self.db.query(Order).filter_by(OrderStatusID = 2).all()
         
         return [
         {

@@ -36,17 +36,11 @@ class AdminController():
         @admin_routes.put('/admin/status/<order_id:int>')
         @role_required('admin')
         def change_status(user_id, order_id):
-            data = request.json
-            new_status_id = data.get('status_id')
-
-            if not new_status_id:
-                response.status = 400
-                return {'error': 'status_id é obrigatório'}
 
             try:
                 db = SessionLocal()
                 admin_service = AdminService(db)
-                updated_order = admin_service.update_order_status(order_id, new_status_id)
+                updated_order = admin_service.update_order_status(order_id, 3)
                 return {'message': 'Status atualizado', 'order': updated_order.OrderID}
             
             except ValueError as e:
