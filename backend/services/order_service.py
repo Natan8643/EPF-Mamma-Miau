@@ -149,4 +149,14 @@ class OrderService:
                 for line in order.lines
             ]
         }
+    
+    def update_order_status(self, order_id: int, new_status_id: int):
+        order = self.db.query(Order).filter(Order.OrderID == order_id).first()
+        if not order:
+            raise ValueError("Pedido não encontrado")
+        
+        order.OrderStatusID = new_status_id
+        self.db.commit()
+        self.db.refresh(order)
+        return order
 

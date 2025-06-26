@@ -97,6 +97,22 @@ class OrderController():
             db.close()
 
             return {"order": order}
+        
+        @order_routes.put('/user/pagamento/<order_id:int>')
+        @role_required('user')
+        def change_status(user_id, order_id):
+
+            try:
+                db = SessionLocal()
+                order_service = OrderService(db)
+                updated_order = order_service.update_order_status(order_id, 2)
+                return {'message': 'Status atualizado', 'order': updated_order.OrderID}
+            
+            except ValueError as e:
+                response.status = 404
+                return {'error': str(e)}
+            finally:
+                db.close()
 
 OrderController(order_routes)
 
