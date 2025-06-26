@@ -175,7 +175,7 @@ main h2 {
 
 .textos-sobre {
     display: flex;
-    gap: 60px;
+    gap: 45px;
     align-items: flex-start;
     width: fit-content;
     margin: 0 auto;
@@ -190,7 +190,7 @@ main h2 {
 
 .paragrafos {
     text-align: justify;
-    width: 425px;
+    width: 455px;
     max-height: 640px;
     min-height: 620px;
     font-family: var(--fonte-textos);
@@ -200,20 +200,52 @@ main h2 {
     margin-top: 30px;
 }
 
-.paragrafos p {
-    margin-bottom: 10px;
+.paragrafos p strong {
+    white-space: nowrap;
 }
 
-.paragrafos:nth-child(1) {
+.textos-sobre p {
+    margin-bottom: 12px;
+}
+
+.textos-sobre > div:first-child p{
     text-indent: 50px;
-    margin-top: 91px;
+    margin-bottom: 25px;
 }
 
-#titulo-texto-sobre {
+.textos-sobre > div:last-child p {
+    position: relative; 
+    text-indent: 45px;
+}
+
+.textos-sobre > div:last-child p::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/interface/pata.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.titulo-texto-sobre {
     font-size: 21px;
     font-family: var(--fonte-textos);
     font-weight: bold;
     color: black;
     text-align: center;
     margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textos-sobre h2 {
+    margin-top: -80px;
+    color: black;
+    font-weight: bold;
+    font-family: var(--fonte-textos);
+    font-size: 25px;
 }
