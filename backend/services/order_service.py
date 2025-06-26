@@ -103,18 +103,8 @@ class OrderService:
             print(f"Erro ao enviar notificação: {e}")
         return order
     
-    def update_order_status(self, order_id: int, new_status_id: int):
-        order = self.db.query(Order).filter(Order.OrderID == order_id).first()
-        if not order:
-            raise ValueError("Pedido não encontrado")
-        
-        order.OrderStatusID = new_status_id
-        self.db.commit()
-        self.db.refresh(order)
-        return order
-    
     def add_product_to_order(self, user_id: int, order_id: int, product_id: int, quantity: int):
-        order = self.db.query(Order).filter_by(OrderID=order_id, UserID=user_id).first()
+        order = self.db.query(Order).filter_by(OrderID=order_id, UserID=user_id, OrderStatusID=1).first()
         if not order:
             raise ValueError("Pedido não encontrado")
 
@@ -137,5 +127,26 @@ class OrderService:
 
         self.db.commit()
         self.db.refresh(order)
-        return order
+        return order    
+    
+    def get_opened_order(self, user_id):
+        order = self.db.query(Order).filter_by(UserID=user_id, OrderStatusID=1).first()
+        if not order:
+            raise ValueError("Pedido não encontrado")
+
+        return {
+            "order_id": order.OrderID,
+            "total_amount": float(order.TotalAmount),
+            "order_date": order.OrderDate.strftime('%d/%m/%Y %H:%M'),
+            "status": order.order_status.name if order.order_status else None,
+            "items": [
+                {
+                    "product_id": line.product.ProductID,
+                    "name": line.product.Name,
+                    "price": float(line.product.Price),
+                    "quantity": line.Quantity,
+                }
+                for line in order.lines
+            ]
+        }
 

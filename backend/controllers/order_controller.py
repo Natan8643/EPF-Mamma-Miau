@@ -61,33 +61,10 @@ class OrderController():
             finally:
                 db.close()
             
-        #criar rota pra atualizar status do pedido
-        @order_routes.put('/order/<order_id:int>/status', method='PUT')
-        @role_required('admin')
-        def change_status(user_id, order_id):
-            data = request.json
-            new_status_id = data.get('status_id')
-
-            if not new_status_id:
-                response.status = 400
-                return {'error': 'status_id é obrigatório'}
-
-            try:
-                db = SessionLocal()
-                order_service = OrderService(db)
-                updated_order = order_service.update_order_status(order_id, new_status_id)
-                return {'message': 'Status atualizado', 'order': updated_order.OrderID}
-            
-            except ValueError as e:
-                response.status = 404
-                return {'error': str(e)}
-            finally:
-                db.close()
-            
         #criar outra rota pra anexar um produto ao mesmo pedido
         #so pode adicionar se estiver com status pendente
         #so pode adicionar se ainda n estiver no pedido (passar pro orderLine?)
-        @order_routes.put('/order/<order_id:int>', method='PUT')
+        @order_routes.put('/order/<order_id:int>')
         @role_required('user')
         def add_product_to_order(user_id, order_id):
             data = request.json
@@ -110,6 +87,16 @@ class OrderController():
                 return {"error": str(e)}
             finally:
                 db.close()
+
+        @order_routes.get('/orders/shopping-cart')
+        @role_required('user') 
+        def get_my_opened_order(user_id):
+            db = SessionLocal()
+            order_service = OrderService(db)
+            order = order_service.get_opened_order(user_id)
+            db.close()
+
+            return {"order": order}
 
 OrderController(order_routes)
 

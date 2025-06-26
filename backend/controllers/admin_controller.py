@@ -17,7 +17,7 @@ class AdminController():
         def get_balance(user_id):
             db = SessionLocal()
             admin_service = AdminService(db)
-            totals = admin_service.total_balance()
+            totals = admin_service.balance()
             db.close()
 
             return {"balance": totals}
@@ -32,5 +32,45 @@ class AdminController():
 
             return {"profits": profits}
 
+         #criar rota pra atualizar status do pedido
+        @admin_routes.put('/admin/status/<order_id:int>')
+        @role_required('admin')
+        def change_status(user_id, order_id):
+            data = request.json
+            new_status_id = data.get('status_id')
+
+            if not new_status_id:
+                response.status = 400
+                return {'error': 'status_id é obrigatório'}
+
+            try:
+                db = SessionLocal()
+                admin_service = AdminService(db)
+                updated_order = admin_service.update_order_status(order_id, new_status_id)
+                return {'message': 'Status atualizado', 'order': updated_order.OrderID}
+            
+            except ValueError as e:
+                response.status = 404
+                return {'error': str(e)}
+            finally:
+                db.close()
+
+        @admin_routes.get('/admin/opened-orders')
+        @role_required('admin')
+        def get_selected_orders(user_id):
+            db = SessionLocal()
+            admin_service = AdminService(db)
+            opened_orders = admin_service.opened_orders()
+
+            return {"opened_orders": opened_orders}
 
 AdminController(admin_routes)
+"""{
+	"items":[
+		{"product_id": 4, "quantity": 1},
+		{"product_id": 5, "quantity": 5},
+		{"product_id": 1, "quantity": 2},
+		{"product_id": 3, "quantity": 2},
+		{"product_id": 6, "quantity": 10}
+	]
+}"""
