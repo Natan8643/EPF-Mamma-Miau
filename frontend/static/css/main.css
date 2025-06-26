@@ -11,16 +11,20 @@
     --peso-titulo: 400
 }
 
-html, body {
-    height: 100%; /* Garante que o body ocupe a tela toda */
+html,
+body {
+    height: 100%;
+    /* Garante que o body ocupe a tela toda */
     margin: 0;
 }
 
 main {
-    position: relative; /* Fundamental para o pseudo-elemento */
+    position: relative;
+    /* Fundamental para o pseudo-elemento */
     margin-left: 210px;
     height: 100%;
-    z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+    z-index: 1;
+    /* Garante que o conteúdo fique acima do fundo */
     padding-top: 30px;
 }
 
@@ -34,11 +38,13 @@ main {
     background-image: url(../img/interface/pizza-home.jpg);
     background-position: center;
     background-size: cover;
-    opacity: 0.8; 
-    z-index: -1; /* Envia o fundo para trás do conteúdo */
+    opacity: 0.8;
+    z-index: -1;
+    /* Envia o fundo para trás do conteúdo */
 }
 
-main h1, main h2 {
+main h1,
+main h2 {
     text-align: center;
     color: var(--branco-texto);
     font-family: var(--fonte-titulo);
@@ -57,7 +63,7 @@ main h2 {
 
 
 
-nav {
+.menu-lateral {
     display: flex;
     width: 210px;
     min-height: 100vh;
@@ -69,7 +75,7 @@ nav {
     left: 0;
 }
 
-nav a {
+.menu-lateral a {
     position: relative;
     display: inline-block;
     color: var(--branco-texto);
@@ -83,7 +89,7 @@ nav a {
     background-color: transparent;
 }
 
-nav a::after {
+.menu-lateral a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -96,16 +102,16 @@ nav a::after {
     transition: transform 0.3s ease;
 }
 
-nav a:hover::after {
+.menu-lateral a:hover::after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
-nav a:active {
+.menu-lateral a:active {
     color: var(--marrom);
 }
 
-nav a:active::after {
+.menu-lateral a:active::after {
     background-color: var(--marrom);
 }
 
@@ -115,7 +121,7 @@ nav a:active::after {
     margin-top: 21px;
 }
 
-nav p {
+.menu-lateral p {
     text-align: center;
     color: var(--branco-texto);
     font-family: var(--fonte-titulo);
@@ -144,7 +150,7 @@ nav p {
 
 #login-menu:hover {
     cursor: pointer;
-    transform: translateY(-3px); 
+    transform: translateY(-3px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -165,4 +171,49 @@ nav p {
 
 #main-sobre {
     background-color: var(--branco-background);
+}
+
+.textos-sobre {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.textos-sobre img {
+    width: 400px;
+    height: 600px;
+    object-fit: cover;
+    margin-top: 50px;
+}
+
+.paragrafos {
+    text-align: justify;
+    width: 425px;
+    max-height: 640px;
+    min-height: 620px;
+    font-family: var(--fonte-textos);
+    font-weight: var(--peso-textos);
+    font-size: 21px;
+    color: black;
+    margin-top: 30px;
+}
+
+.paragrafos p {
+    margin-bottom: 10px;
+}
+
+.paragrafos:nth-child(1) {
+    text-indent: 50px;
+    margin-top: 91px;
+}
+
+#titulo-texto-sobre {
+    font-size: 21px;
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-top: 30px;
 }
