@@ -35,11 +35,11 @@ body {
 }
 
 .caixa {
-    width: 974.5px;
-    height: 805px; 
+    width: 50vw;
+    height: 85vh; 
     background-color: #FFFDF6CC;
     border-radius: 27px;
-    padding-top: 55px;
+    padding-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,33 +49,33 @@ body {
 
 .titulo {
     font-family: var(--fonte-titulo);
-    font-size: 90px;
+    font-size: 5.5vw;
     font-weight: 400;
     text-transform: uppercase;
     color: var(--marrom);
     text-align: center;
-    margin-top: 0;
+    margin-top: -1.5vh;
 }
 
 form {
-    width: 974.5px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 5.7vh;
     justify-content: center;
-    margin-top: 35px;
+    margin-top: 3vh;
 }
 
 .input {
-    width: 680px;       
-    height: 80px;
+    width: 35vw;       
+    height: 9.2vh;
     box-sizing: border-box;
     background-color: var(--verde-principal);
     font-family: var(--fonte-textos);
-    font-size: 25px;
+    font-size: 3.17vh;
     font-weight: 500;
-    padding: 20px 20px 20px 43px;
+    padding: 20px 30px 20px 30px;
     border-radius: 100px;
     border: var(--verde-principal);
     color: var(--branco-texto);  
@@ -91,9 +91,9 @@ form {
 }
 
 .enviar {
-    width: 310px;
-    height: 70px;
-    font-size: 28px;
+    width: 16.5vw;
+    height: 7vh;
+    font-size: 3.8vh;
     background-color: var(--verde-principal);
     border: none;
     font-family: var(--fonte-textos);
@@ -102,7 +102,7 @@ form {
     font-weight: 500;
     color: var(--branco-texto);
     border-radius: 100px;
-    margin-top: 20px;
+    margin-top: 1.9vh;
 }
 
 .enviar:hover {
@@ -115,9 +115,9 @@ form {
 }
 
 .cadastro {
-    margin-top: 50px;
+    margin-top: 4vh;
     font-family: var(--fonte-textos);
-    font-size: 30px;
+    font-size: 3.5vh;
     font-weight: 500;
     text-decoration: none;
     color: var(--marrom);   
@@ -135,15 +135,15 @@ form {
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 21px;
+    gap: 2vh;
     justify-content: center;
     margin-left: -40px;
-    margin-top: 20px;
+    margin-top: 1.8vh;
 }
 
  .input-wrapper {
     position: relative;
-    width: 680px;
+    width: 35vw;
     display: flex;
     align-items: center;
     margin-left: 5px;
@@ -156,35 +156,34 @@ form {
 
 .olho {
     position: absolute;
-    right: 30px;
+    right: 1.3vw;
     top: 50%;
     transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
+    width: 2vw;
+    height: 2vw;
     cursor: pointer;
 }
 
 .circulo {
-    width: 100px;
-    height: 100px;
+    width: 5.5vw;
+    height: 5.5vw;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    outline: 4px solid var(--marrom);
+    outline: 2.8px solid var(--marrom);
 }
 
 .icon1 {
-    width: 100px;
-    height: 105px;
+    width: 5.8vw;
+    height: 6vw;
     object-fit: contain;
-    margin-left: 5.5px;
+    margin-left: 0.3vw;
 }
 
 .icon2 {
-    width: 90px;
-    height: 90px;
-    margin-bottom: 10px;
+    width: 4.6vw;
+    height: 4.6vw;
     margin-left: 5px;
 }
 
@@ -193,21 +192,22 @@ form {
 /* cadastro-confirm */
 
 .logo {
-    margin-top: 4px;
-    max-width: 154.8px;
-    max-height: 154.8px;
+    margin-top:-0.5vh;
+    width: 8.7vw;
+    height: 8.7vw;
+    margin-bottom: 5px;
 }
 
 #circulo-cadastro-confirm {
-    width: 100%;
-    height: 100%;
-    max-width: 177px;
-    max-height: 175px;
+    width: 9.9vw;
+    height: auto;
+    aspect-ratio: 1/1;
+    align-items: flex-end;
 }
 
 #caixa-cadastro {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-direction: column; 
 }
 
 .texto-cadastro {
@@ -215,44 +215,56 @@ form {
     font-weight: 400;
     text-transform: uppercase;
     text-align: center;
-    font-size: 105px;
+    font-size: 14vh;
     color: var(--marrom);
-    margin-top: 20px;
-    line-height: 140px;
+    line-height: 17vh;
+    margin-top: 2.5vh;
 }
 
 #botao-confirm {
-    margin-top: 70px;
+    margin-top: 5vh;
+    width: 16.2vw;
+    height: 9vh;
+    font-size: 4.3vh;
 }
 
 /* cadastro */
 
+#titulo-cadastro {
+    font-size: 11vh;
+    margin-bottom: -2vh;
+    margin-top: -2vh;
+}
+
 .input-cadastro {
-    width: 800px;
-    height: 65px;
+    width: 41.6vw;
+    height: 7.5vh;
+    font-size: 3vh;
 }
 
 .form-cadastro {
-    gap: 35px;
+    gap: 4.7vh;
     margin-top: 30px;
 }
 
 #botao-cadastro {
-    width: 290px;
-    height: 65px;
-    margin-top: 18px;
+    width: 13.5vw;
+    height: 6.5vh;
+    margin-top: -0.8vh;
+    font-size: 2.7vh;
 }
 
 #login {
-    margin-top: 25px;
+    margin-top: 1.4vh;
+    font-size: 2.8vh;
 }
 
 .form-cadastro .input-wrapper {
-    width: 800px;
+    width: 41.6vw;
 }
 
 .form-cadastro #senha {
-    height: 65px;
+    height: 7.5vh;
 }
 
 /* mobile */
