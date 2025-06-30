@@ -14,18 +14,20 @@
 html,
 body {
     height: 100%;
-    /* Garante que o body ocupe a tela toda */
     margin: 0;
 }
 
 main {
     position: relative;
     /* Fundamental para o pseudo-elemento */
-    margin-left: 210px;
+    margin-left: 11vw;
     height: 100%;
     z-index: 1;
     /* Garante que o conteúdo fique acima do fundo */
-    padding-top: 30px;
+    padding-top: 2.7vh;
+}
+#main-menu h1, #main-menu h2{
+    color: var(--branco-texto);
 }
 
 #main-menu::before {
@@ -46,26 +48,24 @@ main {
 main h1,
 main h2 {
     text-align: center;
-    color: var(--branco-texto);
+    color: var(--marrom);
     font-family: var(--fonte-titulo);
     font-weight: var(--peso-titulo);
 }
 
 main h1 {
     text-transform: uppercase;
-    font-size: 80px;
+    font-size: 5.8vw;
 }
 
-main h2 {
-    font-size: 35px;
+#main-menu h2 {
+    font-size: 2.6vw;
     margin-top: -10px;
 }
 
-
-
 .menu-lateral {
     display: flex;
-    width: 210px;
+    width: 13.2vw;
     min-height: 100vh;
     flex-direction: column;
     align-items: center;
@@ -73,6 +73,7 @@ main h2 {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 2;
 }
 
 .menu-lateral a {
@@ -83,8 +84,8 @@ main h2 {
     font-family: var(--fonte-textos);
     text-transform: uppercase;
     font-weight: var(--peso-textos);
-    font-size: 19px;
-    margin-top: 45px;
+    font-size: 1.3vw;
+    margin-top: 3.35vh;
     transition: transform 0.3s ease;
     background-color: transparent;
 }
@@ -116,8 +117,8 @@ main h2 {
 }
 
 .logo {
-    width: 135px;
-    height: 135px;
+    width: 9.5vw;
+    height: 9.5vw;
     margin-top: 21px;
 }
 
@@ -126,10 +127,10 @@ main h2 {
     color: var(--branco-texto);
     font-family: var(--fonte-titulo);
     font-weight: var(--peso-titulo);
-    font-size: 30px;
+    font-size: 2.4vw;
     line-height: 30px;
     text-transform: uppercase;
-    margin-top: 25px;
+    margin-top: 5vh;
 }
 
 #login-menu {
@@ -137,14 +138,14 @@ main h2 {
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
     color: var(--branco-texto);
-    font-size: 20px;
-    height: 50px;
-    width: 125px;
+    font-size: 1.5vw;
+    height: 6.7vh;
+    width: 9.7vw;
     text-transform: uppercase;
     justify-content: center;
     align-items: center;
     border: 2px solid var(--branco-texto);
-    margin-top: 45px;
+    margin-top: 6.1vh;
     transition: all 0.3s ease;
 }
 
@@ -160,13 +161,13 @@ main h2 {
 }
 
 #pedidos {
-    height: 65px;
-    width: 65px;
-    margin-top: 65px;
+    height: 3.2vw;
+    width: 3.2vw;
+    margin-top: 2.5vh;
 }
 
 #titulo-sobre {
-    color: var(--marrom);
+    font-size: 5.5vw;
 }
 
 #main-sobre {
@@ -175,29 +176,28 @@ main h2 {
 
 .textos-sobre {
     display: flex;
-    gap: 45px;
+    gap: 2vw;
     align-items: flex-start;
     width: fit-content;
     margin: 0 auto;
 }
 
 .textos-sobre img {
-    width: 400px;
-    height: 600px;
+    width: 23vw;
+    height: 67vh;
     object-fit: cover;
-    margin-top: 50px;
+    margin-top: 4.5vh;
+    border-radius: 10px;
 }
 
 .paragrafos {
     text-align: justify;
-    width: 455px;
-    max-height: 640px;
-    min-height: 620px;
+    width: 26.5vw;
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
-    font-size: 21px;
+    font-size: 1.2vw;
     color: black;
-    margin-top: 30px;
+    margin-top: 3vh;
 }
 
 .paragrafos p strong {
@@ -209,13 +209,13 @@ main h2 {
 }
 
 .textos-sobre > div:first-child p{
-    text-indent: 50px;
+    text-indent: 2.6vw;
     margin-bottom: 25px;
 }
 
 .textos-sobre > div:last-child p {
     position: relative; 
-    text-indent: 45px;
+    text-indent: 2.3vw;
 }
 
 .textos-sobre > div:last-child p::before {
@@ -223,29 +223,36 @@ main h2 {
     position: absolute;
     left: 0;
     top: 5px;
-    width: 24px;
-    height: 24px;
+    width: 1.25vw;
+    height: 1.25vw;
     background-image: url("../img/interface/pata.png"); 
     background-size: contain;
     background-repeat: no-repeat;
 }
 
+.textos-sobre > div:last-child .paragrafos p:last-of-type {
+    text-indent: 0;
+}
+
+.textos-sobre > div:last-child .paragrafos p:last-of-type::before {
+    display: none;
+}
+
 .titulo-texto-sobre {
-    font-size: 21px;
+    font-size: 1.3vw;
     font-family: var(--fonte-textos);
     font-weight: bold;
     color: black;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 2vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .textos-sobre h2 {
-    margin-top: -80px;
     color: black;
     font-weight: bold;
     font-family: var(--fonte-textos);
-    font-size: 25px;
+    font-size: 1.7vw;
 }
