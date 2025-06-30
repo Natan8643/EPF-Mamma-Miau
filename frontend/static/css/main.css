@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 :root {
     --verde-principal: #A0C878;
     --verde-secundario: #DDEB9D;
@@ -20,7 +21,7 @@ body {
 main {
     position: relative;
     /* Fundamental para o pseudo-elemento */
-    margin-left: 11vw;
+    margin-left: 13.2vw;
     height: 100%;
     z-index: 1;
     /* Garante que o conteúdo fique acima do fundo */
@@ -149,9 +150,7 @@ main h1 {
     text-transform: uppercase;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--branco-texto);
-    /* margin-top: auto; */
-    /* margin-bottom: 4vh; */
+    border: 3px solid var(--branco-texto);
     transition: all 0.3s ease;
 }
 
@@ -266,3 +265,91 @@ main h1 {
     font-family: var(--fonte-textos);
     font-size: 1.7vw;
 }
+
+/* cardapio */
+
+.itens h2 {
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    font-size: 50px;
+    margin: 40px;
+    margin-top: 70px;
+}
+
+.itens {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+}
+
+.grupo-itens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* centraliza mesmo com poucos itens */
+    gap: 50px 60px;
+    padding: 20px 0;
+}
+.cardapio-item {
+    flex: 0 0 500px; /* tamanho fixo para os itens */
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--branco-background);
+    border-radius: 27px;
+    align-items: center;
+    padding: 20px 25px 20px 10px;
+    overflow: hidden;
+    border: 2px solid #f0e4d4;
+    transition: transform 0.3s ease;
+}
+
+.cardapio-item:hover {
+    transform: scale(1.05);
+}
+
+.item-info {
+    font-family: var(--fonte-textos);
+    font-weight: var(--peso-textos);
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+    color: var(--marrom);
+}
+
+.item-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 27px;
+}
+
+.item-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    background-color: var(--verde-principal);
+    min-width: 60px;
+    height: 60px;
+    color: var(--branco-texto);
+    font-weight: 400;
+    font-size: 70px;
+    font-family: "Quicksand", sans-serif;
+    border-radius: 100%;
+    padding-bottom: 5px;
+    cursor: pointer; 
+    transition: background-color 0.2s ease;
+}
+
+.item-add:hover {
+    background-color: #9aad44;
+}
+
+.item-add:active {
+    background-color: var(--marrom);
+}
+
+

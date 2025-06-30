@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mamma Miau</title>
-    
+
     <link rel="icon" type="img/png" href="../../static/img/interface/logo.png">
     <link rel="stylesheet" href="../../static/css/reset.css">
     <link rel="stylesheet" href="../../static/css/main.css">
@@ -25,13 +25,85 @@
         <a href="">pedidos</a>
         <a href="">gerenciamento</a>
         <div class="rodape-menu">
-            <button id="pedidos">status pedido</button>
+            <button id="pedidos"></button>
             <p>Mamma<br>Miau</p>
-            <button id="login-menu" onclick="window.location.href='../menu/login.html'">Login</button>            
+            <button id="login-menu" onclick="window.location.href='../menu/login.html'">Login</button>
         </div>
     </nav>
 
+    <main>
+        <h1>cardápio</h1>
+        <div class="itens">
+            <section class="entrada">
+                <h2>Entradas</h2>
+                <div class="grupo-itens" id="entradas">
+                    <div class="cardapio-item">
+                        <img src="../../static/img/interface/pata.png" alt="${item.nome}" class="item-img">
+                        <div class="item-info">
+                            <h3>Teste</h3>
+                            <span>R$2,00</span>
+                        </div>
+                        <button class="item-add">+</button>
+                    </div>
+                    <div class="cardapio-item">
+                        <img src="../../static/img/foods/prato-lasanha.jpg" alt="${item.nome}" class="item-img">
+                        <div class="item-info">
+                            <h3>Lasanha à bolonhesa dasdsad</h3>
+                            <span>R$2,00</span>
+                        </div>
+                        <button class="item-add">+</button>
+                    </div>
+                    <div class="cardapio-item">
+                        <img src="../../static/img/interface/pata.png" alt="${item.nome}" class="item-img">
+                        <div class="item-info">
+                            <h3>Teste</h3>
+                            <span>R$2,00</span>
+                        </div>
+                        <button class="item-add">+</button>
+                    </div>
+                    <div class="cardapio-item">
+                        <img src="../../static/img/interface/pata.png" alt="${item.nome}" class="item-img">
+                        <div class="item-info">
+                            <h3>Teste</h3>
+                            <span>R$2,00</span>
+                        </div>
+                        <button class="item-add">+</button>
+                    </div>
+                    <div class="cardapio-item">
+                        <img src="../../static/img/interface/pata.png" alt="${item.nome}" class="item-img">
+                        <div class="item-info">
+                            <h3>Teste</h3>
+                            <span>R$2,00</span>
+                        </div>
+                        <button class="item-add">+</button>
+                    </div>
+                </div>
+            </section>
+            <section class="massa">
+                <h2>Massas</h2>
+                <div class="grupo-itens" id="massas"></div>
+            </section>
+            <section class="risoto">
+                <h2>Risotos</h2>
+                <div class="grupo-itens" id="risotos"></div>
+            </section>
+            <section class="pizza">
+                <h2>Pizzas</h2>
+                <div class="grupo-itens" id="pizzas"></div>
+            </section>
+            <section class="sobremesa">
+                <h2>Sobremesas</h2>
+                <div class="grupo-itens" id="sobremesas"></div>
+            </section>
+            <section class="bebida">
+                <h2>Bebidas</h2>
+                <div class="grupo-itens" id="bebidas"></div>
+            </section>
+        </div>
+    </main>
+
     <script src="../../static/js/script.js"></script>
+    <script src="../../static/js/cardapio.js"></script>
 </body>
 
 </html>
