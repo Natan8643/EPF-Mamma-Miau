@@ -374,10 +374,26 @@ main h1 {
     padding-top: 40px;
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
+    color: var(--marrom);
+}
+
+.gerenciamento h2 {
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    font-size: 35px;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .coluna, .saldo, .lucro, .melhores-pratos {
     width: 750px;
+}
+
+.saldo, .lucro, .melhores-pratos {
+    padding-left: 25px;
+    padding-top: 15px;
+    border-radius: 27px;
+    border: 3px solid #f0e4d4;
 }
 
 .coluna {
@@ -388,21 +404,49 @@ main h1 {
     gap: 50px;
 }
 
+
+.coluna-img {
+    width: 80px;
+    height: 80px;
+    background-color: var(--verde-principal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    object-fit: fill;
+}
+
 .saldo {
     background-color: var(--branco-fundo);
     height: 350px;
     font-weight: bold;
 }
 
-.saldo h2 {
-    display: flex;
-    justify-content: flex-start;
-}
 
 .saldo h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.lucro-img, .despesas-img {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 3px;
+}
+
+.lucrosT, .despesas {
+    display: flex;
+    flex-direction: row;
+}
+
+.saldo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 15px;
 }
 
 .lucro {
