@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
+    // const userRole = localStorage.getItem('userRole');
+    // const linkGerenciamento = document.querySelector('a[href*="gerenciamento"]');
+    // if (linkGerenciamento) {
+    //     if (userRole !== 'admin') {
+    //         linkGerenciamento.style.display = 'none';
+    //     }
+    // }
 
     // Toggle de visibilidade da senha
     var senhaInput = document.getElementById("senha");
@@ -54,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const result = await log(login, password);
                 console.log(result);
                 localStorage.setItem('token', result.token);
-
+                localStorage.setItem('userRole', result.user.role); // Salva a role do usuário
                 window.location.href = './index.html';
             } catch (error) {
                 alert("Erro: " + error.message);
