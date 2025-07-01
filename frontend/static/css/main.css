@@ -188,6 +188,8 @@ main h1 {
     transform: scale(1.2);
 }
 
+/* sobre-nos */
+
 #titulo-sobre {
     font-size: 5.5vw;
 }
@@ -361,4 +363,55 @@ main h1 {
     background-color: var(--marrom);
 }
 
+/* gerenciamento */
 
+.gerenciamento {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 90px;
+    padding-top: 40px;
+    font-family: var(--fonte-textos);
+    font-weight: var(--peso-textos);
+}
+
+.coluna, .saldo, .lucro, .melhores-pratos {
+    width: 750px;
+}
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 750px;
+    gap: 50px;
+}
+
+.saldo {
+    background-color: var(--branco-fundo);
+    height: 350px;
+    font-weight: bold;
+}
+
+.saldo h2 {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.saldo h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lucro {
+    background-color: var(--branco-fundo);
+    height: 350px;
+}
+
+.melhores-pratos {
+    height: 750px;
+    background-color: var(--branco-fundo);
+    text-align: start;
+}
