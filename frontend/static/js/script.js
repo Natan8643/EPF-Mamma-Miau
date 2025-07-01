@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(result);
                 localStorage.setItem('token', result.token);
                 localStorage.setItem('userRole', result.user.role); // Salva a role do usuário
-                window.location.href = '../../menu/index.html';
+                window.location.href = '../menu/index.html';
             } catch (error) {
                 alert("Erro: " + error.message);
             }

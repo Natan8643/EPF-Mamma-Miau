@@ -116,3 +116,5 @@ class OrderController():
 
 OrderController(order_routes)
 
+#melhores pratos e rota de categoria; 
+#serviço de email(colocar depois de finalizar compra)
