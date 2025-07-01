@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-    // const userRole = localStorage.getItem('userRole');
-    // const linkGerenciamento = document.querySelector('a[href*="gerenciamento"]');
-    // if (linkGerenciamento) {
-    //     if (userRole !== 'admin') {
-    //         linkGerenciamento.style.display = 'none';
-    //     }
-    // }
+    const userRole = localStorage.getItem('userRole');
+    const linkGerenciamento = document.querySelector('a[href*="gerenciamento"]');
+    if (linkGerenciamento) {
+        if (userRole !== 'admin') {
+            linkGerenciamento.style.display = 'none';
+        }
+    }
 
     // Toggle de visibilidade da senha
     var senhaInput = document.getElementById("senha");

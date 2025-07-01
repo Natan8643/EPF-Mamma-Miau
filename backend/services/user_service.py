@@ -40,6 +40,6 @@ class UserService:
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
         return {
             "token": token,
-            "user": user
+            "user": user,
         }
 

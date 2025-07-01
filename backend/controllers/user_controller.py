@@ -59,8 +59,11 @@ class UserController():
             if validate:
                 return {
                     "token": validate["token"],
-                    "user_id": validate["user"].UserID,
-                    "user_name": validate["user"].Name
+                    "user": {
+                        "id": validate["user"].UserID,
+                        "name": validate["user"].Name,
+                        "role": validate["user"].Role
+                    }
                 }
 
             response.status = 401
