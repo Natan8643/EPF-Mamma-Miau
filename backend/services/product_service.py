@@ -6,17 +6,25 @@ class ProductService:
         self.db = db
 
     def get_all_products(self):
-        products = self.db.query(Product).all()
-                
-        return [self.serialize_product(product) for product in products]
+        products = self.db.query(Product).join(Product.category).all()
 
-    def serialize_product(self, product):
-        return {
-            "id": product.ProductID,
-            "nome": product.Name,
-            "categoria": product.Category,
-            "preco": str(product.Price),
-        }
+        grouped = {}
+
+        for product in products:
+            category_name = product.category.name
+
+            if category_name not in grouped:
+                grouped[category_name] = []
+
+            grouped[category_name].append({
+                "id": product.ProductID,
+                "nome": product.Name,
+                "preco": str(product.Price)
+            })
+
+        result = [{"categoria": k, "itens": v} for k, v in grouped.items()]
+
+        return {"products": result}
 
     def create_product(self, name:str, category:str, price:str):
         new_product = Product(Name=name, Category=category, Price=price)

@@ -20,7 +20,6 @@ function criarItemCardapio(item) {
   card.classList.add("cardapio-item");
 
   card.innerHTML = `
-    <img src="${item.imagem}" alt="${item.nome}" class="item-img">
     <div class="item-info">
       <h3>${item.nome}</h3>
       <span>${item.preco}</span>
@@ -32,13 +31,25 @@ function criarItemCardapio(item) {
 }
 
 // Popula os itens nas seções do HTML
+const categoriaParaId = {
+  "Entrada": "entradas",
+  "Massa": "massas",
+  "Risoto": "risotos",
+  "Pizza": "pizzas",
+  "Sobremesa": "sobremesas",
+  "Bebida": "bebidas"
+};
+
 function popularCardapio(cardapio) {
-  cardapio.forEach(item => {
-    const container = document.getElementById(`${item.categoria}s`); // ex: entradas, massas...
+  cardapio.forEach(categoria => {
+    const containerId = categoriaParaId[categoria.categoria];
+    const container = document.getElementById(containerId);
     if (container) {
-      container.appendChild(criarItemCardapio(item));
+      categoria.itens.forEach(item => {
+        container.appendChild(criarItemCardapio(item));
+      });
     } else {
-      console.warn(`Categoria não encontrada: ${item.categoria}`);
+      console.warn(`Categoria não encontrada: ${categoria.categoria}`);
     }
   });
 }

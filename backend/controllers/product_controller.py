@@ -19,7 +19,7 @@ class ProductController():
             products = product_service.get_all_products()
             db.close()
 
-            return {"products": products}
+            return products
 
         @product_routes.post('/product')
         @role_required('admin')
