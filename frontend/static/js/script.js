@@ -1,10 +1,29 @@
+function isTokenExpired(token) {
+    if (!token) return true;
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        // exp está em segundos desde 1970
+        return Date.now() >= payload.exp * 1000;
+    } catch (e) {
+        return true;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
-    
+    const token = localStorage.getItem('token');
     const userRole = localStorage.getItem('userRole');
     const linkGerenciamento = document.querySelector('a[href*="gerenciamento"]');
-    if (linkGerenciamento) {
-        if (userRole !== 'admin') {
-            linkGerenciamento.style.display = 'none';
+
+    // Verifica se o token está expirado
+    if (!token || isTokenExpired(token)) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userRole');
+        if (linkGerenciamento) linkGerenciamento.style.display = 'none';
+    } else {
+        if (linkGerenciamento) {
+            if (userRole !== 'admin') {
+                linkGerenciamento.style.display = 'none';
+            }
         }
     }
 
