@@ -44,26 +44,48 @@
                             <div class="coluna-img">
                                 <img class="lucro-img" src="../../static/img/interface/grafico.png" alt="gráfico">
                             </div>
-                            <p>Lucros Totais</p>
-                            <p>R$ 24.500</p>
+                            <div class="saldo-texto">
+                                <p>Lucros Totais</p>
+                                <p>R$ 24.500</p>
+                            </div>
                         </div>
                         <div class="despesas">
                             <div class="coluna-img">
                                 <img class="despesas-img" src="../../static/img/interface/maleta.png" alt="despesas">
                             </div>
-                            <p>Despesas Totais</p>
-                            <p>R$ 24.500</p>
+                            <div class="saldo-texto">
+                                <p>Despesas Totais</p>
+                                <p>R$ 24.500</p>
+                            </div>
                         </div>
                     </div>
                 </section>
                 <section class="lucro">
                     <h2>Lucros Totais</h2>
+                    <div class="lucro-info">
+                        <div class="grafico-lucro">
+                            <canvas id="graficoRosca" width="600" height="600"></canvas>
+                        </div>
+                        <div class="lucro-texto">
+                            <p>R$ 60.000</p>
+                            <ul class="legenda">
+                                <li><span class="cor-entrada"></span>Entrada</li>
+                                <li><span class="cor-prato"></span>Prato Principal</li>
+                                <li><span class="cor-sobremesa"></span>Sobremesa</li>
+                                <li><span class="cor-bebida"></span>Bebida</li>
+                            </ul>
+                        </div>
+                    </div>
                 </section>
             </div>
             <section class="melhores-pratos">
                 <h2>Melhores Pratos</h2>
+                <div class="Pratos">
+
+                </div>
             </section>
         </div>
     </main>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../../static/js/grafico.js"></script>
 </body>

@@ -386,12 +386,11 @@ main h1 {
 }
 
 .coluna, .saldo, .lucro, .melhores-pratos {
-    width: 750px;
+    width: 700px;
 }
 
 .saldo, .lucro, .melhores-pratos {
-    padding-left: 25px;
-    padding-top: 15px;
+    padding: 15px 25px 0;
     border-radius: 27px;
     border: 3px solid #f0e4d4;
 }
@@ -400,28 +399,9 @@ main h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 750px;
+    height: 680px;
     gap: 50px;
 }
-
-
-.coluna-img {
-    width: 80px;
-    height: 80px;
-    background-color: var(--verde-principal);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    object-fit: fill;
-}
-
-.saldo {
-    background-color: var(--branco-fundo);
-    height: 350px;
-    font-weight: bold;
-}
-
 
 .saldo h3 {
     display: flex;
@@ -431,10 +411,22 @@ main h1 {
     font-size: 30px;
     font-weight: bold;
 }
-.lucro-img, .despesas-img {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 3px;
+
+.saldo-info > div:nth-child(2) .coluna-img {
+    background-color: var(--marrom);
+}
+
+.saldo {
+    background-color: var(--branco-fundo);
+    height: 315px;
+    font-weight: bold;
+}
+
+.saldo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
 }
 
 .lucrosT, .despesas {
@@ -442,20 +434,101 @@ main h1 {
     flex-direction: row;
 }
 
-.saldo-info {
+.lucro-img, .despesas-img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 3px;
+}
+
+.coluna-img {
+    width: 70px;
+    height: 70px;
+    background-color: var(--verde-principal);
     display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    object-fit: fill;
+}
+
+.saldo-texto {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     flex-direction: column;
-    gap: 30px;
-    margin-top: 15px;
+    width: 50%;
+    gap: 10px;
+    padding-left: 10px;
+    font-size: 18px;
 }
 
 .lucro {
     background-color: var(--branco-fundo);
-    height: 350px;
+    height: 315px;
+}
+
+.lucro-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    padding: 0 10px;
+    justify-content: center;
+    gap: 140px;
+    
+}
+
+#graficoRosca {
+    width: 215px !important;
+    height: 215px !important;
+}
+
+.lucro-texto p:first-of-type {
+    text-align: center;
+    margin-bottom: 25px;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.legenda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.legenda li {
+    display: flex;
+    align-items: center;
+}
+
+.cor-entrada, .cor-prato, .cor-sobremesa, .cor-bebida {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.cor-entrada {
+    background-color: #92E27A;
+}
+
+.cor-prato {
+    background-color: #80B155;
+}
+
+.cor-sobremesa {
+    background-color: #97BF00;
+}
+
+.cor-bebida {
+    background-color: #428F60;
 }
 
 .melhores-pratos {
-    height: 750px;
+    height: 685px;
     background-color: var(--branco-fundo);
     text-align: start;
 }
