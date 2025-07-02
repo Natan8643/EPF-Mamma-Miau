@@ -58,5 +58,23 @@ async function atualizarGraficoRosca() {
   }
 }
 
+async function atualizarSaldo() {
+  try {
+    const resposta = await fetch('http://localhost:5000/balance', {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    });
+    const saldo = await resposta.json();
+    // Atualize os textos dinamicamente
+    document.getElementById('dinheiro-saldo').textContent = 'R$ ' + saldo.balance.total_amount.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+    document.getElementById('dinheiro-lucro').textContent = 'R$ ' + saldo.balance.total_profit.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+    document.getElementById('dinheiro-despesa').textContent = 'R$ ' + saldo.balance.total_expenses.toLocaleString('pt-BR', {minimumFractionDigits: 2});
+  } catch (err) {
+    console.error('Erro ao buscar dados do gráfico:', err);
+  }
+}
+
 // Chame ao carregar a página
 atualizarGraficoRosca();
+atualizarSaldo();
