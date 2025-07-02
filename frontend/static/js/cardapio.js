@@ -30,20 +30,10 @@ function criarItemCardapio(item) {
   return card;
 }
 
-// Popula os itens nas seções do HTML
-const categoriaParaId = {
-  "Entrada": "entradas",
-  "Massa": "massas",
-  "Risoto": "risotos",
-  "Pizza": "pizzas",
-  "Sobremesa": "sobremesas",
-  "Bebida": "bebidas"
-};
-
 function popularCardapio(cardapio) {
   cardapio.forEach(categoria => {
-    const containerId = categoriaParaId[categoria.categoria];
-    const container = document.getElementById(containerId);
+    //const containerId = categoriaParaId[categoria.categoria];
+    const container = document.getElementById(`${categoria.categoria}`);
     if (container) {
       categoria.itens.forEach(item => {
         container.appendChild(criarItemCardapio(item));
