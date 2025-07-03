@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy import func, desc
 from models.order import Order
 from models.order_line import OrderLine
 from models.product import Product
@@ -100,3 +101,41 @@ class AdminService:
         }
         for order in orders
     ]
+
+    def best_dishes(self):
+   
+        best_dishes_query = (
+            self.db.query(
+                Product.Name.label("dish_name"),
+                Product.ImageLink.label("image_link"), 
+                func.sum(OrderLine.Quantity).label("total_qty"),
+                func.sum(OrderLine.Quantity * Product.Price).label("total_value")
+            )
+            .join(Product, OrderLine.ProductID == Product.ProductID)
+            .join(Order, OrderLine.OrderID == Order.OrderID)
+            .filter(Order.OrderStatusID.in_([2, 3]))
+            .group_by(Product.ProductID, Product.Name)
+            .order_by(desc("total_qty"))
+            .limit(4)
+        )
+
+        best_dishes = best_dishes_query.all()
+
+        response = []
+        for idx, dish in enumerate(best_dishes, start=1):
+            response.append({
+                "posicao": f"{idx}º",
+                "nome": dish.dish_name,
+                "img": dish.image_link,
+                "quantidade_vendida": int(dish.total_qty),
+                "total_vendido": float(dish.total_value),
+            })
+
+        total_mais_vendido = response[0]['total_vendido'] if response else 0
+
+        return {
+            "best_dishes": response,
+            "total_mais_vendido": total_mais_vendido
+        }
+            
+

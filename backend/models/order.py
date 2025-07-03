@@ -17,7 +17,6 @@ class Order(Base):
     order_status = relationship('OrderStatus', backref='orders')
     lines = relationship('OrderLine', backref='lines')
 
-
     #backref -> atalho bidirecional(pelo orderLine precisamos acessar oder, e pelo order precisamos acessar orderLine)
     #entao com backref ele ja cria direto o relacionamento
 

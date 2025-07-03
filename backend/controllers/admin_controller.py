@@ -58,6 +58,15 @@ class AdminController():
 
             return {"opened_orders": opened_orders}
 
+        @admin_routes.get('/best-dishes')
+        @role_required('admin')
+        def get_best_dishes(user_id):
+            db = SessionLocal()
+            admin_service = AdminService(db)
+            dishes = admin_service.best_dishes()
+            return dishes
+        
+
 AdminController(admin_routes)
 """{
 	"items":[
