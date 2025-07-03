@@ -390,9 +390,12 @@ main h1 {
 }
 
 .saldo, .lucro, .melhores-pratos {
-    padding: 15px 25px 0;
     border-radius: 27px;
     border: 3px solid #f0e4d4;
+}
+
+.saldo, .lucro {
+    padding: 15px 25px 0;
 }
 
 .coluna {
@@ -531,4 +534,90 @@ main h1 {
     height: 685px;
     background-color: var(--branco-fundo);
     text-align: start;
+    position: relative;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.melhores-pratos::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.melhores-pratos:hover {
+    overflow-x: auto;
+    scrollbar-width: thin; /* Firefox */
+}
+.melhores-pratos:hover::-webkit-scrollbar {
+    display: block;
+    height: 8px; /* altura da barra de rolagem */
+    background: #ccc;
+}
+
+.titulo-melhores, .melhores-info {
+    padding: 0 25px;
+}
+
+.melhores-info {
+    padding-bottom: 15px;
+}
+
+.titulo-melhores {
+    background-color: var(--branco-fundo);
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    border-radius: 27px;
+}
+
+
+.subtitulo-melhores {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px 50px 0;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.pratos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: 100%;
+    padding: 0 50px; 
+    margin-top: 20px;    
+}
+
+.img-melhores {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 27px;
+}
+
+.texto-prato {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 17px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.pratos h4 {
+    font-weight: bold;
+    max-width: 300px;
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0;
+    margin-left: auto;
+    font-size: 22px;
+    padding-right: 25px;
 }
