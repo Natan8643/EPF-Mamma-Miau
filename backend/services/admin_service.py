@@ -124,7 +124,7 @@ class AdminService:
         response = []
         for idx, dish in enumerate(best_dishes, start=1):
             response.append({
-                "posicao": f"{idx}º",
+                "posicao": f"{idx}",
                 "nome": dish.dish_name,
                 "img": dish.image_link,
                 "quantidade_vendida": int(dish.total_qty),
