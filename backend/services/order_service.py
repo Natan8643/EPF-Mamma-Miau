@@ -90,17 +90,6 @@ class OrderService:
         self.db.commit()
         self.db.refresh(order)
 
-        #--chama serviço de sms
-        user = self.db.query(User).filter(User.UserID == user_id).first()
-        if not user:
-            raise ValueError("Usuário não encontrado")
-        
-        notifier = UserNotificationService(name=user.Name, email=user.Login)
-        
-        try:
-            sid = notifier.notify_order_created(order.OrderID)
-        except Exception as e:
-            print(f"Erro ao enviar notificação: {e}")
         return order
     
     def add_product_to_order(self, user_id: int, order_id: int, product_id: int, quantity: int):
@@ -150,12 +139,25 @@ class OrderService:
             ]
         }
     
-    def update_order_status(self, order_id: int, new_status_id: int):
+    def update_order_status(self,user_id:int, order_id: int, new_status_id: int):
         order = self.db.query(Order).filter(Order.OrderID == order_id).first()
+
+        
         if not order:
             raise ValueError("Pedido não encontrado")
         
         order.OrderStatusID = new_status_id
+        user = self.db.query(User).filter(User.UserID == user_id).first()
+        if not user:
+            raise ValueError("Usuário não encontrado")
+        
+        notifier = UserNotificationService(name=user.Name, email=user.Login)
+        
+        try:
+            sid = notifier.notify_order_created(order.OrderID)
+        except Exception as e:
+            print(f"Erro ao enviar notificação: {e}")
+
         self.db.commit()
         self.db.refresh(order)
         return order

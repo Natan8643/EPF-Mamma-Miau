@@ -20,6 +20,7 @@ function criarItemCardapio(item) {
   card.classList.add("cardapio-item");
 
   card.innerHTML = `
+    <img src="${item.img || '../../static/img/interface/pata.png'}" alt="${item.nome}" class="item-img">
     <div class="item-info">
       <h3>${item.nome}</h3>
       <span>${item.preco}</span>

@@ -105,7 +105,7 @@ class OrderController():
             try:
                 db = SessionLocal()
                 order_service = OrderService(db)
-                updated_order = order_service.update_order_status(order_id, 2)
+                updated_order = order_service.update_order_status(user_id=user_id, order_id=order_id, new_status_id=2)
                 return {'message': 'Status atualizado', 'order': updated_order.OrderID}
             
             except ValueError as e:
@@ -115,6 +115,4 @@ class OrderController():
                 db.close()
 
 OrderController(order_routes)
-
 #melhores pratos; 
-#serviço de email(colocar depois de finalizar compra)

@@ -29,11 +29,12 @@ class ProductController():
             name = data.get('name')
             category = data.get('category')
             price = data.get('price')
+            imageLink = data.get('image_link')
 
             db = SessionLocal()
             product_service = ProductService(db)
 
-            product = product_service.create_product(name=name, category=category, price=price)
+            product = product_service.create_product(name=name, category=category, price=price, imageLink=imageLink)
             
             if product:
                 productId =product.ProductID

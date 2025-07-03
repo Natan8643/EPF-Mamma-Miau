@@ -19,15 +19,16 @@ class ProductService:
             grouped[category_name].append({
                 "id": product.ProductID,
                 "nome": product.Name,
-                "preco": str(product.Price)
+                "preco": str(product.Price),
+                "img": product.ImageLink
             })
 
         result = [{"categoria": k, "itens": v} for k, v in grouped.items()]
 
         return {"products": result}
 
-    def create_product(self, name:str, category:str, price:str):
-        new_product = Product(Name=name, Category=category, Price=price)
+    def create_product(self, name:str, category:str, price:str, imageLink:str):
+        new_product = Product(Name=name, Category=category, Price=price, ImageLink=imageLink)
 
         self.db.add(new_product)
         self.db.commit()
