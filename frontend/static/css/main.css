@@ -20,11 +20,9 @@ body {
 
 main {
     position: relative;
-    /* Fundamental para o pseudo-elemento */
     margin-left: 13.2vw;
     min-height: 100vh;
     z-index: 1;
-    /* Garante que o conteúdo fique acima do fundo */
     padding-top: 2.7vh;
     background-color: var(--branco-background);
 }
@@ -44,7 +42,6 @@ main {
     background-size: cover;
     opacity: 0.8;
     z-index: -1;
-    /* Envia o fundo para trás do conteúdo */
 }
 
 main h1,
@@ -57,11 +54,11 @@ main h2 {
 
 main h1 {
     text-transform: uppercase;
-    font-size: 5.8vw;
+    font-size: clamp(36px, 5.8vw, 96px);
 }
 
 #main-menu h2 {
-    font-size: 2.6vw;
+    font-size: clamp(18px, 2.6vw, 48px);
     margin-top: -10px;
 }
 
@@ -86,7 +83,7 @@ main h1 {
     font-family: var(--fonte-textos);
     text-transform: uppercase;
     font-weight: var(--peso-textos);
-    font-size: 1.3vw;
+    font-size: clamp(14px, 1.3vw, 28px);
     margin-top: 3.35vh;
     transition: transform 0.3s ease;
     background-color: transparent;
@@ -129,7 +126,7 @@ main h1 {
     color: var(--branco-texto);
     font-family: var(--fonte-titulo);
     font-weight: var(--peso-titulo);
-    font-size: 2.4vw;
+    font-size: clamp(18px, 2.4vw, 44px);
     line-height: 4.5vh;
     text-transform: uppercase;
     margin-bottom: 4vh;
@@ -145,7 +142,7 @@ main h1 {
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
     color: var(--branco-texto);
-    font-size: 1.5vw;
+    font-size: clamp(16px, 1.5vw, 32px);
     height: 6.7vh;
     width: 9.7vw;
     text-transform: uppercase;
@@ -191,7 +188,7 @@ main h1 {
 /* sobre-nos */
 
 #titulo-sobre {
-    font-size: 5.5vw;
+    font-size: clamp(30px, 5.5vw, 92px);
 }
 
 .textos-sobre {
@@ -215,7 +212,7 @@ main h1 {
     width: 26.5vw;
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
-    font-size: 1.2vw;
+    font-size: clamp(14px, 1.2vw, 24px);
     color: black;
     margin-top: 3vh;
 }
@@ -259,7 +256,7 @@ main h1 {
 }
 
 .titulo-texto-sobre {
-    font-size: 1.3vw;
+    font-size: clamp(16px, 1.3vw, 26px);
     font-family: var(--fonte-textos);
     font-weight: bold;
     color: black;
@@ -274,7 +271,7 @@ main h1 {
     color: black;
     font-weight: bold;
     font-family: var(--fonte-textos);
-    font-size: 1.7vw;
+    font-size: clamp(20px, 1.7vw, 34px);
 }
 
 /* cardapio */
@@ -356,7 +353,7 @@ main h1 {
 }
 
 .item-add:hover {
-    background-color: #9aad44;
+    background-color: #80B155;
 }
 
 .item-add:active {
