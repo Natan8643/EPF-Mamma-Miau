@@ -38,7 +38,7 @@ class OrderController():
         @role_required('user')
         def create_order(user_id):
             data = request.json
-            items = data.get('items')
+            items = data.get('itens')
 
             if not items or not isinstance(items, list):
                 response.status = 400
@@ -98,7 +98,7 @@ class OrderController():
 
             return {"order": order}
         
-        @order_routes.put('/user/pagamento/<order_id:int>')
+        @order_routes.put('/pagamento/<order_id:int>')
         @role_required('user')
         def change_status(user_id, order_id):
 

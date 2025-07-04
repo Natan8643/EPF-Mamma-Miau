@@ -121,8 +121,9 @@ class OrderService:
     
     def get_opened_order(self, user_id):
         order = self.db.query(Order).filter_by(UserID=user_id, OrderStatusID=1).first()
+        
         if not order:
-            raise ValueError("Pedido não encontrado")
+            return None
 
         return {
             "order_id": order.OrderID,
@@ -133,7 +134,7 @@ class OrderService:
                 {
                     "product_id": line.product.ProductID,
                     "name": line.product.Name,
-                    "price": float(line.product.Price),
+                    "price": float(line.product.Price)*line.Quantity,
                     "quantity": line.Quantity,
                     "img": line.product.ImageLink
                 }
