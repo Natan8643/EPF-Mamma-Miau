@@ -192,6 +192,8 @@ main h1 {
     align-items: center;
     background-color: #f8f4e7;
     height: 120px;
+    min-height: 120px;
+    max-height: 120px;
     padding-left: 10px;
     border-radius: 27px;
     border: 2px solid var(--branco-borda);
