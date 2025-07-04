@@ -5,6 +5,7 @@
     --branco-texto: #FAF6E9;
     --branco-fundo: #FFFDF6;
     --branco-background: #F6F3EE;
+    --branco-borda : #f0e4d4;
     --marrom: #544541;
     --fonte-titulo: 'Playfair Display', serif;
     --fonte-textos: 'Nunito Sans', sans-serif;
@@ -113,6 +114,84 @@ main h1 {
 
 .menu-lateral a:active::after {
     background-color: var(--marrom);
+}
+
+.carrinho {
+    z-index: 4;
+    position: relative;
+    color: black;
+    position: fixed;
+    right: -5px;
+    padding-right: 5px;
+    bottom: 0;
+    height: 100%;
+    width: 32vw;
+    background-color: var(--branco-fundo);
+    border: 4px solid var(--branco-borda);
+    border-radius: 50px 0 0 50px;
+}
+
+.carrinho-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carrinho-conteudo h3 {
+    font-family: var(--fonte-titulo);
+    font-weight: bold;
+    font-size: 80px;
+    color: var(--marrom);
+    margin-top: 30px;
+}
+
+.carrinho-itens {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 40px;
+    padding-top: 40px;
+}
+
+.produto {
+    display: flex;
+    flex-direction: row;
+    width: 94%;
+    align-items: center;
+    background-color: #f8f4e7;
+    height: 120px;
+    padding-left: 20px;
+    border-radius: 27px;
+    border: 2px solid var(--branco-borda);
+}
+
+.produto-img {
+    object-fit: cover;
+    width: 90px;
+    height: 90px;
+    border-radius: 23px;
+    margin-right: 20px;
+}
+
+.produto p {
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    color: var(--marrom);
+    font-size: 20px;
+}
+
+.produto p:nth-of-type(1) {
+    max-width: 200px;
+}
+
+.produto p:nth-of-type(2) {
+    margin-left: 10px;
+}
+
+.produto p:nth-of-type(3) {
+    margin-left: auto;
+    margin-right: 30px;
 }
 
 .logo {
@@ -308,7 +387,7 @@ main h1 {
     align-items: center;
     padding: 20px 25px 20px 10px;
     overflow: hidden;
-    border: 2px solid #f0e4d4;
+    border: 2px solid var(--branco-borda);
     transition: transform 0.3s ease;
 }
 
@@ -388,7 +467,7 @@ main h1 {
 
 .saldo, .lucro, .melhores-pratos {
     border-radius: 27px;
-    border: 3px solid #f0e4d4;
+    border: 3px solid var(--branco-borda);
 }
 
 .saldo, .lucro {
