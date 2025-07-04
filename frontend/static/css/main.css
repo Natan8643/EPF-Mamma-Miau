@@ -124,17 +124,31 @@ main h1 {
     right: -5px;
     padding-right: 5px;
     bottom: 0;
-    height: 100%;
+    height: 100vh;
     width: 32vw;
     background-color: var(--branco-fundo);
     border: 4px solid var(--branco-borda);
     border-radius: 50px 0 0 50px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    pointer-events: none;
+    overflow-y: hidden; 
+}
+
+.carrinho.ativo {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: all;
+    display: flex;
 }
 
 .carrinho-conteudo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    width: 96%;
 }
 
 .carrinho-conteudo h3 {
@@ -148,28 +162,45 @@ main h1 {
 .carrinho-itens {
     width: 100%;
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     align-items: flex-start;
     margin-left: 40px;
     padding-top: 40px;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.carrinho-itens::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.carrinho-itens:hover {
+    overflow-x: auto;
+    scrollbar-width: thin; /* Firefox */
+}
+.carrinho-itens:hover::-webkit-scrollbar {
+    display: block;
+    height: 8px; /* altura da barra de rolagem */
+    background: #ccc;
 }
 
 .produto {
     display: flex;
     flex-direction: row;
-    width: 94%;
+    width: 550px;
     align-items: center;
     background-color: #f8f4e7;
     height: 120px;
-    padding-left: 20px;
+    padding-left: 10px;
     border-radius: 27px;
     border: 2px solid var(--branco-borda);
 }
 
 .produto-img {
     object-fit: cover;
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     border-radius: 23px;
     margin-right: 20px;
 }
@@ -191,7 +222,70 @@ main h1 {
 
 .produto p:nth-of-type(3) {
     margin-left: auto;
-    margin-right: 30px;
+    margin-right: 10px;
+}
+
+.lixeira {
+    margin-right: 10px;
+}
+
+.lixeira svg {
+    width: 35px;
+    height: 35px;
+    transition: 0.2s;
+}
+
+.lixeira:hover svg {
+    color: #A53F2B;
+    cursor: pointer;
+}
+
+.carrinho-rodape {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    padding-bottom: 30px;
+    padding-top: 25px;
+}
+
+.texto-rodape {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 60px;
+}
+
+.texto-rodape p {
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    font-size: 23px;  
+    margin-left: 30px;  
+    text-transform: uppercase;
+    color: var(--marrom);
+}
+
+.botao-pedir {
+    background-color: var(--verde-principal);
+    border-radius: 20px;
+    width: 400px;
+    height: 75px;
+    font-family: var(--fonte-textos);
+    font-weight: var(--peso-textos);
+    text-transform: uppercase;
+    color: var(--branco-texto);
+    font-size: 200%;
+    margin-left: auto;
+}
+
+.botao-pedir:hover {
+    cursor: pointer;
+    border: 2px solid var(--marrom);
+}
+
+.botao-pedir:active {
+    background-color: #80B155;
 }
 
 .logo {
@@ -242,7 +336,7 @@ main h1 {
     color: var(--marrom);
 }
 
-#pedidos {
+#botao-carrinho {
     height: 7.7vw;
     width: 7.7vw;
     display: flex;
@@ -254,13 +348,13 @@ main h1 {
     transition: transform 0.5s ease;
 }
 
-#pedidos img {
+#botao-carrinho img {
     object-fit: fill;
     height: 100%;
     width: 100%;
 }
 
-#pedidos:hover {
+#botao-carrinho:hover {
     transform: scale(1.2);
 }
 
