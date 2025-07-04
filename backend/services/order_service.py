@@ -39,6 +39,7 @@ class OrderService:
                     "name": line.product.Name,
                     "price": float(line.product.Price),
                     "quantity": line.Quantity,
+                    "img": line.product.ImageLink
                 }
                 for line in order.lines
             ]
@@ -128,12 +129,13 @@ class OrderService:
             "total_amount": float(order.TotalAmount),
             "order_date": order.OrderDate.strftime('%d/%m/%Y %H:%M'),
             "status": order.order_status.name if order.order_status else None,
-            "items": [
+            "itens": [
                 {
                     "product_id": line.product.ProductID,
                     "name": line.product.Name,
                     "price": float(line.product.Price),
                     "quantity": line.Quantity,
+                    "img": line.product.ImageLink
                 }
                 for line in order.lines
             ]
