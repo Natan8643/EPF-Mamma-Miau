@@ -54,7 +54,7 @@ function popularCarrinho(order) {
   container.innerHTML = ""; // Limpa antes de popular
 
   if (!order || !order.itens || order.itens.length === 0) {
-    container.innerHTML = "<p>Carrinho vazio</p>";
+    container.innerHTML = `<p class="vazio">Carrinho vazio</p>`;
     document.querySelector(".texto-rodape p:last-child").textContent =
       "R$ 0,00";
     return;
@@ -73,10 +73,5 @@ function popularCarrinho(order) {
   })}`;
 }
 
-function fazerPedido() {
-  var pedido = document.getElementById("item-add");
-
-  pedido.onclick = function () {};
-}
 
 buscarCarrinho();

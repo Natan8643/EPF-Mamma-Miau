@@ -185,6 +185,13 @@ main h1 {
     background: #ccc;
 }
 
+.vazio {
+    text-align: center;
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    font-size: 50px;
+}
+
 .produto {
     display: flex;
     flex-direction: row;
