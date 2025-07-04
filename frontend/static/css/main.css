@@ -805,7 +805,7 @@ main h1 {
     padding-right: 25px;
 }
 
-/* pedidos */
+/* pedidos-adm */
 
 .andamento {
     display: flex;
@@ -890,5 +890,198 @@ main h1 {
 }
 
 .andamento-botao:active {
+    background-color: #80B155;
+}
+
+/* pedidos-user */
+
+.pedidos-user {
+    width: 1500px;
+    height: 725px;
+    margin: 20px auto 0;
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+}
+
+.historico, .pedido-atual {
+    height: 100%;
+    background-color: var(--branco-fundo);
+    width: 710px;
+    display: flex;
+    border-radius: 27px;
+    border: 2px solid #f0e4d4;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.historico h2, .pedido-atual h2 {
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    margin: 10px auto 0 20px;
+}
+
+.historico-conteudo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 15px;
+    overflow-y: auto;
+    padding-bottom: 20px;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.historico-conteudo::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.historico-conteudo:hover {
+    overflow-x: auto;
+    scrollbar-width: thin; /* Firefox */
+}
+.historico-conteudo:hover::-webkit-scrollbar {
+    display: block;
+    height: 8px; /* altura da barra de rolagem */
+    background: #ccc;
+}
+
+.historico-pedidos {
+    display: flex;
+    flex-direction: column;
+    width: 670px;
+    height: 120px;
+    background-color: var(--branco-texto);
+    border: 2px solid #f0e4d4;
+    border-radius: 27px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 20px;
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--marrom);
+    gap: 8px;
+}
+
+.historico-pedidos:focus {
+    background-color: #DDEB9E;
+    border: 2px solid var(--verde-principal);
+}
+
+.historico-conteudo p:first-child {
+    font-size: 23px;
+}
+
+.pedido-conteudo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 20px;
+    margin-top: 20px;
+    gap: 15px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.pedido-conteudo::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.pedido-conteudo:hover {
+    overflow-x: auto;
+    scrollbar-width: thin; /* Firefox */
+}
+.pedido-conteudo:hover::-webkit-scrollbar {
+    display: block;
+    height: 8px; /* altura da barra de rolagem */
+    background: #ccc;
+}
+
+.pedido-itens {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--branco-texto);
+    border-radius: 27px;
+    width: 670px;
+    min-height: 120px;
+    height: 120px;
+    padding-left: 10px;
+    border: 2px solid #f0e4d4;
+}
+
+.pedido-itens img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 23px;
+    margin-right: 20px;
+}
+
+.pedido-texto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    color: var(--marrom);
+    font-size: 20px;
+    width: 100%;
+    gap: 20px;
+}
+
+.pedido-texto p:first-child {
+    max-width: 200px;
+}
+
+.pedido-texto p:last-of-type{
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.pedido-rodape {
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 15px 0 15px 35px;
+}
+
+.texto-rodape-pedidos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: var(--fonte-textos);
+    font-weight: bold;
+    font-size: 25px;
+    text-transform: uppercase;
+    color: var(--marrom);
+}
+
+.botao-pedido {
+    background-color: var(--verde-principal);
+    margin-left: auto;
+    margin-right: 35px;
+    font-family: var(--fonte-textos);
+    font-weight: var(--peso-textos);
+    color: var(--branco-texto);
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 400px;
+    height: 70px;
+    border-radius: 20px;
+}
+
+.botao-pedido:hover {
+    border: 2px solid var(--marrom);
+}
+
+.botao-pedido:active {
     background-color: #80B155;
 }
