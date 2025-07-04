@@ -186,10 +186,14 @@ main h1 {
 }
 
 .vazio {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     font-family: var(--fonte-textos);
-    font-weight: bold;
+    font-weight: var(--peso-titulo);
     font-size: 50px;
+    width: 95%;
+    height: 100%;
+    margin-top: 24vh;    
 }
 
 .produto {
