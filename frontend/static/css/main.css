@@ -570,7 +570,7 @@ main h1 {
     flex-direction: row;
     justify-content: center;
     gap: 4.8vw;
-    padding-top: 40px;
+    padding-top: 4.2vh;
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
     color: var(--marrom);
@@ -579,13 +579,13 @@ main h1 {
 .gerenciamento h2 {
     font-family: var(--fonte-textos);
     font-weight: bold;
-    font-size: 35px;
+    font-size: 3.6vh;
     display: flex;
     justify-content: flex-start;
 }
 
 .coluna, .saldo, .lucro, .melhores-pratos {
-    width: 700px;
+    width: 37.3vw;
 }
 
 .saldo, .lucro, .melhores-pratos {
@@ -594,23 +594,23 @@ main h1 {
 }
 
 .saldo, .lucro {
-    padding: 15px 25px 0;
+    padding: 1.5vh 1.3vw 0;
 }
 
 .coluna {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 680px;
-    gap: 50px;
+    height: 72vh;
+    gap: 6vh;
 }
 
 .saldo h3 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
-    font-size: 30px;
+    margin-top: 1.1vh;
+    font-size: 3.1vh;
     font-weight: bold;
 }
 
@@ -620,15 +620,15 @@ main h1 {
 
 .saldo {
     background-color: var(--branco-fundo);
-    height: 315px;
+    height: 33vh;
     font-weight: bold;
 }
 
 .saldo-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 10px;
+    gap: 2.1vh;
+    margin-top: 1vh;
 }
 
 .lucrosT, .despesas {
@@ -637,14 +637,14 @@ main h1 {
 }
 
 .lucro-img, .despesas-img {
-    width: 40px;
-    height: 40px;
+    width: 4.3vh;
+    height: 4.3vh;
     margin-bottom: 3px;
 }
 
 .coluna-img {
-    width: 70px;
-    height: 70px;
+    width: 7.3vh;
+    height: 7.3vh;
     background-color: var(--verde-principal);
     display: flex;
     justify-content: center;
@@ -659,14 +659,14 @@ main h1 {
     align-items: flex-start;
     flex-direction: column;
     width: 50%;
-    gap: 10px;
+    gap: 1vh;
     padding-left: 10px;
-    font-size: 18px;
+    font-size: 2vh;
 }
 
 .lucro {
     background-color: var(--branco-fundo);
-    height: 315px;
+    height: 33vh;
 }
 
 .lucro-info {
@@ -674,30 +674,30 @@ main h1 {
     display: flex;
     align-items: center;
     margin-top: 5px;
-    padding: 0 10px;
+    padding: 0 1vh;
     justify-content: center;
-    gap: 140px;
+    gap: 14.6vh;
     
 }
 
 #graficoRosca {
-    width: 215px !important;
-    height: 215px !important;
+    width: 22.5vh !important;
+    height: 22.5vh !important;
 }
 
 .lucro-texto p:first-of-type {
     text-align: center;
-    margin-bottom: 25px;
-    margin-right: 20px;
+    margin-bottom: 2.5vh;
+    margin-right: 1.2vw;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 3.1vh;
 }
 
 .legenda {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 22px;
+    font-size: 2.35vh;
 }
 
 .legenda li {
@@ -707,10 +707,10 @@ main h1 {
 
 .cor-entrada, .cor-prato, .cor-sobremesa, .cor-bebida {
     display: inline-block;
-    width: 40px;
-    height: 20px;
+    width: 2.2vw;
+    height: 2.1vh;
     border-radius: 10px;
-    margin-right: 15px;
+    margin-right: 0.8vw;
 }
 
 .cor-entrada {
@@ -730,7 +730,7 @@ main h1 {
 }
 
 .melhores-pratos {
-    height: 685px;
+    height: 72vh;
     background-color: var(--branco-fundo);
     text-align: start;
     position: relative;
@@ -753,11 +753,11 @@ main h1 {
 }
 
 .titulo-melhores, .melhores-info {
-    padding: 0 25px;
+    padding: 0 1.35vw;
 }
 
 .melhores-info {
-    padding-bottom: 15px;
+    padding-bottom: 1.6vh;
 }
 
 .titulo-melhores {
@@ -766,7 +766,7 @@ main h1 {
     top: 0;
     z-index: 3;
     width: 100%;
-    padding-top: 15px;
+    padding-top: 1.6vh;
     padding-bottom: 5px;
     border-radius: 27px;
 }
@@ -776,7 +776,7 @@ main h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 25px 50px 0;
+    padding: 2.6vh 2.65vw 0;
     font-weight: bold;
     font-size: 24px;
 }
@@ -786,13 +786,13 @@ main h1 {
     flex-direction: row;
     flex-wrap: nowrap;
     min-height: 100%;
-    padding: 0 50px; 
+    padding: 0 2.65vw; 
     margin-top: 20px;    
 }
 
 .img-melhores {
-    width: 110px;
-    height: 110px;
+    width: 11.5vh;
+    height: 11.5vh;
     object-fit: cover;
     border-radius: 27px;
 }
@@ -801,14 +801,14 @@ main h1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 17px;
-    font-size: 20px;
-    padding-left: 10px;
+    gap: 1.8vh;
+    font-size: 2.2vh;
+    padding-left: 0.6vw;
 }
 
 .pratos h4 {
     font-weight: bold;
-    max-width: 300px;
+    max-width: 15.6vw;
 }
 
 .contador {
@@ -817,8 +817,8 @@ main h1 {
     justify-content: center;
     margin-right: 0;
     margin-left: auto;
-    font-size: 22px;
-    padding-right: 25px;
+    font-size: 2.3vh;
+    padding-right: 1.3vw;
 }
 
 /* pedidos-adm */
