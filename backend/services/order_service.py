@@ -167,3 +167,34 @@ class OrderService:
         self.db.refresh(order)
         return order
 
+    def delete_item(self, user_id, order_id, product_id):
+        order = self.db.query(Order).filter(Order.OrderID == order_id, Order.UserID == user_id).first()
+        if not order:
+            raise ValueError("Pedido não encontrado")
+
+        line = next((l for l in order.lines if l.ProductID == product_id), None)
+        if not line:
+            raise ValueError("Produto não encontrado no pedido")
+
+        line.Quantity -= 1
+        current_quantity = line.Quantity
+
+        if line.Quantity <= 0:
+            self.db.delete(line)
+            current_quantity = 0
+
+        product = self.db.query(Product).filter(Product.ProductID == product_id).first()
+        if product:
+            order.TotalAmount -= product.Price
+            if order.TotalAmount < 0:
+                order.TotalAmount = 0
+
+        self.db.commit()
+        self.db.refresh(order)
+    
+    # Retorne um dicionário explícito
+        return {
+            'order': order,
+            'quantity': current_quantity,
+            'OrderLineID': line.OrderLineID if line else None
+        }

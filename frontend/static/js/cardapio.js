@@ -1,5 +1,5 @@
 import { LocalStorageKeys } from "./const.js";
-
+import { buscarCarrinho } from "./carrinho.js";
 // Simula uma "requisição" ao backend
 async function buscarCardapioDoBackend() {
   try {
@@ -17,7 +17,11 @@ async function buscarCardapioDoBackend() {
 }
 
 let pedidoAtual = null; // Armazena o pedido aberto (order_id)
-let itensPedido = {}; // { product_id: quantidade }
+export let itensPedido = {}; // { product_id: quantidade }
+
+export function setItensPedido(obj) {
+  itensPedido = obj;
+}
 
 async function buscarPedidoAberto() {
   const token = localStorage.getItem("token");
@@ -31,22 +35,25 @@ async function buscarPedidoAberto() {
       if (data.order && data.order.itens) {
         data.order.itens.forEach((item) => {
           itensPedido[item.product_id] = item.quantity;
+          console.log(itensPedido);
         });
       }
     }
+    console.log("depois" + itensPedido);
   } catch (e) {
     pedidoAtual = null;
   }
 }
 
 async function adicionarAoCarrinho(productId) {
-  itensPedido[productId] = (itensPedido[productId] || 0) + 1;
+  // Sempre começa com 1 quando for adição nova
+  const novaQuantidade = (itensPedido[productId] || 0) + 1;
 
   try {
     const token = localStorage.getItem(LocalStorageKeys.TOKEN);
     const order = JSON.parse(localStorage.getItem(LocalStorageKeys.ORDER));
+
     if (!order) {
-      // // Cria novo pedido com esse produto
       const resp = await fetch("http://localhost:5000/order", {
         method: "POST",
         headers: {
@@ -54,29 +61,38 @@ async function adicionarAoCarrinho(productId) {
           Authorization: "Bearer " + token,
         },
         body: JSON.stringify({
-          itens: [{ product_id: productId, quantity: itensPedido[productId] }],
+          itens: [{ product_id: productId, quantity: 1 }], // Sempre 1 para novo
         }),
       });
+
       if (resp.ok) {
         const data = await resp.json();
         pedidoAtual = data.order_id;
+        itensPedido[productId] = 1; // Reseta para 1
       }
     } else {
-      await fetch(`http://localhost:5000/order/${order.order_id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify({
-          product_id: productId,
-          quantity: itensPedido[productId],
-        }),
-      });
+      const resp = await fetch(
+        `http://localhost:5000/order/${order.order_id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          body: JSON.stringify({
+            product_id: productId,
+            quantity: novaQuantidade,
+          }),
+        }
+      );
+
+      if (resp.ok) {
+        itensPedido[productId] = novaQuantidade;
+      }
     }
+    await buscarCarrinho();
   } catch (error) {
     console.log(error);
-    alert("Produto adicionado ao pedido!");
   }
 }
 
@@ -89,7 +105,7 @@ function ativarBotoesAdd() {
 
       const productId = Number(card.dataset.productId); // Defina data-product-id no HTML!
       adicionarAoCarrinho(productId);
-      alert("Produto adicionado ao pedido!");
+      console.log("Produto adicionado ao pedido!");
     });
   });
 }
@@ -111,7 +127,7 @@ function criarItemCardapio(item) {
   }" class="item-img">
     <div class="item-info">
       <h3>${item.nome}</h3>
-      <span>${precoFormatado}</span>
+      <span>R$ ${precoFormatado}</span>
     </div>
     <button class="item-add">+</button>
   `;

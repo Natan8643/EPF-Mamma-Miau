@@ -113,6 +113,26 @@ class OrderController():
                 return {'error': str(e)}
             finally:
                 db.close()
+        #  
+        @order_routes.post('/excluir/<order_id:int>/<product_id:int>')
+        @role_required('user')
+        def delete_item(user_id, order_id, product_id):
+            try:
+                db = SessionLocal()
+                order_service = OrderService(db)
+                result = order_service.delete_item(user_id=user_id, order_id=order_id, product_id=product_id)
+        
+                return {
+                'message': 'Item apagado',
+                'quantity': result['quantity'],  # Acesse como dicionário
+                'product_id': product_id
+            }
+        
+            except ValueError as e:
+                response.status = 404
+                return {'error': str(e)}
+            finally:
+                db.close()
 
 OrderController(order_routes)
 #melhores pratos;

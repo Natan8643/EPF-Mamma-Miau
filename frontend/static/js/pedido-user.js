@@ -84,7 +84,7 @@ function mostrarSidebarPedido(order) {
           minimumFractionDigits: 2,
         })}</p>
       </div>
-      <button class="botao-fechar-sidebar">Fechar</button>
+      <button class="botao-pedido botao-fechar-sidebar">Fechar</button>
     </div>
   `;
 
