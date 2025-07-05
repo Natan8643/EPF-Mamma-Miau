@@ -48,7 +48,6 @@ async function abrirDetalhePedido(orderId) {
     }
     const { order } = await resposta.json();
 
-    // Mostra o pedido na sidebar (ou div lateral)
     mostrarSidebarPedido(order);
   } catch (error) {
     alert("Erro ao buscar detalhes do pedido");
@@ -89,7 +88,6 @@ function mostrarSidebarPedido(order) {
     </div>
   `;
 
-  // Exibe a sidebar (caso use display: none ou classes)
   sidebar.style.display = "block";
 
   // Botão para fechar a sidebar

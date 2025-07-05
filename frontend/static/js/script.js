@@ -93,9 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (userName && loginMenuBtn) {
     loginMenuBtn.textContent = `Olá, ${userName.split(" ")[0]}!`; // Mostra apenas o primeiro nome
-     document.body.classList.add("logado");
-    loginMenuBtn.onclick = () => {
-    };
+    document.body.classList.add("logado");
+    loginMenuBtn.onclick = () => {};
   }
 
   // Evento de cadastro
@@ -169,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const pedidosMenu = document.getElementById("pedidos-menu");
   if (pedidosMenu) {
     pedidosMenu.addEventListener("click", function (e) {
-      e.preventDefault(); // Impede o comportamento padrão do link
+      e.preventDefault();
       const userRole = localStorage.getItem("userRole");
       if (userRole === "admin") {
         window.location.href = "../menu/pedidos-adm.html";

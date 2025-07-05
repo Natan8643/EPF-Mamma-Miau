@@ -105,10 +105,17 @@ class OrderService:
         if not product:
             raise ValueError("Produto inválido")
 
-        new_line = OrderLine(ProductID=product_id, Quantity=quantity)
-        order.lines.append(new_line) #Cria nova linha e adiciona
-
-        order.TotalAmount += product.Price * quantity
+        # Procura se já existe o produto no pedido
+        existing_line = next((line for line in order.lines if line.ProductID == product_id), None)
+        if existing_line:
+            # Apenas soma a quantidade
+            existing_line.Quantity += quantity
+            order.TotalAmount += product.Price * quantity
+        else:
+            # Cria nova linha e adiciona
+            new_line = OrderLine(ProductID=product_id, Quantity=quantity)
+            order.lines.append(new_line)
+            order.TotalAmount += product.Price * quantity
 
         self.db.commit()
         self.db.refresh(order)

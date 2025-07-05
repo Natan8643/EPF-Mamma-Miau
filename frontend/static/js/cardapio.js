@@ -19,20 +19,6 @@ async function buscarCardapioDoBackend() {
 let pedidoAtual = null; // Armazena o pedido aberto (order_id)
 let itensPedido = {}; // { product_id: quantidade }
 
-// Armazena os itens do pedido temporariamente
-// let itensPedido = [];
-
-// Função para adicionar item ao pedido
-// function adicionarAoPedido(productId) {
-//   // Verifica se já existe o produto no pedido
-//   const existente = itensPedido.find((item) => item.product_id === productId);
-//   if (existente) {
-//     existente.quantity += 1;
-//   } else {
-//     itensPedido.push({ product_id: productId, quantity: 1 });
-//   }
-// }
-
 async function buscarPedidoAberto() {
   const token = localStorage.getItem("token");
   try {
