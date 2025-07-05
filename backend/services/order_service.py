@@ -109,8 +109,8 @@ class OrderService:
         existing_line = next((line for line in order.lines if line.ProductID == product_id), None)
         if existing_line:
             # Apenas soma a quantidade
-            existing_line.Quantity += quantity
-            order.TotalAmount += product.Price * quantity
+            existing_line.Quantity += 1
+            order.TotalAmount += product.Price
         else:
             # Cria nova linha e adiciona
             new_line = OrderLine(ProductID=product_id, Quantity=quantity)
