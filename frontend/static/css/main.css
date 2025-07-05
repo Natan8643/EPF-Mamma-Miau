@@ -827,55 +827,63 @@ main h1 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 1450px;
-    height: 720px;
+    width: 76.5vw;
+    height: 75.5vh;
     background-color: var(--branco-fundo);
     border-radius: 27px;
     border: 2px solid #f0e4d4;
-    margin: 20px auto 0;
-    padding-left: 50px;
+    margin: 2vh auto 0;
+    padding-left: 2.65vw;
 }
 
-.andamento::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
-}
-
-.andamento:hover {
-    overflow-x: auto;
-    scrollbar-width: thin; /* Firefox */
-}
-.andamento:hover::-webkit-scrollbar {
-    display: block;
-    height: 8px; /* altura da barra de rolagem */
-    background: #ccc;
-}
 
 .andamento h2 {
     display: flex;
     justify-content: flex-start;
-    margin: 10px auto 0 -20px;
+    margin: 1.1vh auto 0 -2.1vh;
     font-family: var(--fonte-textos);
     font-weight: bold;
-    font-size: 30px;
+    font-size: 3.2vh;
 }
 
 .andamento-conteudo {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    margin-top: 20px;
+    width: 100%;
+    gap: 3.1vh;
+    margin-top: 2.1vh;
     overflow-y: auto;
-    padding-bottom: 15px;
+    padding-bottom: 1.6vh;
+}
+
+.andamento-conteudo {
+    overflow-y: auto;
+    overflow-x: hidden; /* evita rolagem horizontal */
+    scrollbar-width: none; /* Firefox */
+}
+
+.andamento-conteudo:hover {
+    scrollbar-width: thin; /* Firefox */
+}
+
+.andamento-conteudo::-webkit-scrollbar {
+    display: none;
+}
+
+.andamento-conteudo:hover::-webkit-scrollbar {
+    display: block;
+    width: 8px; /* para rolagem vertical */
+    background: #ccc;
 }
 
 .andamento-itens {
     display: flex;
     align-items: center;
-    width: 1350px;
+    width: 71vw;
     background-color: #F8F4E7;
     height: 120px;
-    min-height: 120px;
-    padding: 0 20px;
+    min-height: 12.5vh;
+    padding: 0 1.2vw;
     border-radius: 27px;
     border: 2px solid #f0e4d4;
 }
@@ -885,9 +893,9 @@ main h1 {
     flex-direction: column;
     justify-content: space-between;
     font-family: var(--fonte-textos);
-    gap: 25px;
+    gap: 2.6vh;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 2.7vh;
     color: var(--marrom);
 }
 
@@ -897,15 +905,15 @@ main h1 {
     justify-content: center;
     background-color: var(--verde-principal);
     margin-left: auto;
-    margin-right: 10px;
+    margin-right: 0.6vw;
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
-    font-size: 21px;
+    font-size: 2.2vh;
     color: var(--branco-texto);
     text-transform: uppercase;
     border-radius: 10px;
-    width: 220px;
-    height: 65px;
+    width: 11.7vw;
+    height: 6.7vh;
 }
 
 .andamento-botao:hover {
