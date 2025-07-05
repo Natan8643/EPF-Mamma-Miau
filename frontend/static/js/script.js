@@ -80,11 +80,22 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(result);
         localStorage.setItem("token", result.token);
         localStorage.setItem("userRole", result.user.role); // Salva a role do usuário
+        localStorage.setItem("userName", result.user.name);
         window.location.href = "../menu/index.html";
       } catch (error) {
         alert("Erro: " + error.message);
       }
     });
+  }
+
+  const userName = localStorage.getItem("userName");
+  const loginMenuBtn = document.getElementById("login-menu");
+
+  if (userName && loginMenuBtn) {
+    loginMenuBtn.textContent = `Olá, ${userName.split(" ")[0]}!`; // Mostra apenas o primeiro nome
+     document.body.classList.add("logado");
+    loginMenuBtn.onclick = () => {
+    };
   }
 
   // Evento de cadastro

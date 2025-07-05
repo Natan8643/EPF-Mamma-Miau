@@ -349,6 +349,17 @@ main h1 {
     color: var(--marrom);
 }
 
+.logado #login-menu {
+  font-size: clamp(16px, 0.9vw, 32px);
+  max-width: 9vw;
+
+  /* Adicione estas propriedades: */
+  white-space: normal;
+  word-break: break-word;
+  text-align: center;
+  line-height: 1.1;
+}
+
 #botao-carrinho {
     height: 7.7vw;
     width: 7.7vw;
