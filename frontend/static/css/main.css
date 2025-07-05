@@ -477,36 +477,36 @@ main h1 {
 /* cardapio */
 
 .itens h2 {
-    font-family: var(--fonte-textos);
+    font-family: var(--fonte-titulo);
     font-weight: bold;
-    font-size: 50px;
-    margin: 40px;
-    margin-top: 70px;
+    font-size: 5.3vh;
+    margin: 4.1vh;
+    margin-top: 7.1vh;
 }
 
 .itens {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 0 40px;
+    padding: 0 2vw;
 }
 
 .grupo-itens {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;  /* centraliza mesmo com poucos itens */
-    gap: 50px 60px;
-    padding: 20px 0;
+    gap: 5.2vh 3.2vw;
+    padding: 2.2vh 0;
 }
 .cardapio-item {
-    flex: 0 0 500px; /* tamanho fixo para os itens */
-    height: 120px;
+    flex: 0 0 24.8vw; /* tamanho fixo para os itens */
+    height: 14.6vh;
     display: flex;
     flex-direction: row;
     background-color: var(--branco-fundo);
     border-radius: 27px;
     align-items: center;
-    padding: 20px 25px 20px 10px;
+    padding: 2vh 0.5vw;
     overflow: hidden;
     border: 2px solid var(--branco-borda);
     transition: transform 0.3s ease;
@@ -519,17 +519,18 @@ main h1 {
 .item-info {
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
-    margin-left: 20px;
+    margin-left: 1.1vw;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-size: 20px;
+    gap: 1.6vh;
+    font-size: 2vh;
     color: var(--marrom);
+    max-width: 230px;
 }
 
 .item-img {
-    width: 100px;
-    height: 100px;
+    width: 12vh;
+    height: 12vh;
     object-fit: cover;
     border-radius: 27px;
 }
@@ -538,13 +539,14 @@ main h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     margin-left: auto;
     background-color: var(--verde-principal);
-    min-width: 60px;
-    height: 60px;
+    min-width: 6.1vh;
+    height: 6.1vh;
     color: var(--branco-texto);
     font-weight: 400;
-    font-size: 70px;
+    font-size: 7.2vh;
     font-family: "Quicksand", sans-serif;
     border-radius: 100%;
     padding-bottom: 5px;
