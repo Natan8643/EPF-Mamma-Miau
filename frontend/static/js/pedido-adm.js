@@ -60,12 +60,12 @@ async function finalizarPedido(orderId) {
       }
     );
     if (resposta.ok) {
-      alert("Pedido finalizado!");
+      console.log("Pedido finalizado!");
     } else {
-      alert("Erro ao finalizar pedido.");
+      console.log("Erro ao finalizar pedido.");
     }
   } catch (error) {
-    alert("Erro ao finalizar pedido.");
+    console.log("Erro ao finalizar pedido.");
   }
 }
 

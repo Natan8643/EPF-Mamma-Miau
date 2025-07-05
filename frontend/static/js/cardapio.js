@@ -114,13 +114,18 @@ function criarItemCardapio(item) {
   card.classList.add("cardapio-item");
   card.dataset.productId = item.id; // <-- Adiciona o id do produto
 
+  const precoFormatado = Number(item.preco).toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
   card.innerHTML = `
     <img src="${item.img || "../../static/img/interface/pata.png"}" alt="${
     item.nome
   }" class="item-img">
     <div class="item-info">
       <h3>${item.nome}</h3>
-      <span>${item.preco}</span>
+      <span>${precoFormatado}</span>
     </div>
     <button class="item-add">+</button>
   `;
