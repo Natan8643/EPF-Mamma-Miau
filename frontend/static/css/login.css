@@ -121,10 +121,34 @@ form {
     font-weight: 500;
     text-decoration: none;
     color: var(--marrom);   
+    position: relative; /* Necessário para o pseudo-elemento */
+    display: inline-block; /* Para o sublinhado não ocupar a linha toda */
+    background-color: transparent;
+    text-decoration: none; /* Remove o sublinhado padrão */
+    transition: color 0.3s ease; /* Transição apenas para a cor */
 }
 
+.cadastro::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--marrom);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.cadastro:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Mantém o hover original como fallback */
 .cadastro:hover {
-    text-decoration: underline;
+    text-decoration: none; /* Garante que não apareça o sublinhado padrão */
 }
 
 .cadastro:active {
@@ -185,6 +209,44 @@ form {
     width: 4.6vw;
     height: 4.6vw;
     margin-left: 5px;
+}
+
+.botao-voltar {
+    margin-top: auto;
+    margin-bottom: 30px;
+    font-size: 30px;
+    color: var(--marrom);
+    font-family: var(--fonte-textos);
+    font-weight: 500;
+    position: relative; /* Necessário para o pseudo-elemento */
+    display: inline-block; /* Para o sublinhado não ocupar a linha toda */
+    background-color: transparent;
+    text-decoration: none; /* Remove o sublinhado padrão */
+    transition: color 0.3s ease; /* Transição apenas para a cor */
+}
+
+/* Efeito de sublinhado animado IGUAL ao do menu */
+.botao-voltar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--marrom);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.botao-voltar:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Mantém o hover original como fallback */
+.botao-voltar:hover {
+    text-decoration: none; /* Garante que não apareça o sublinhado padrão */
 }
 
 
