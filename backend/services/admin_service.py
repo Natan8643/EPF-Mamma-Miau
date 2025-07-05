@@ -15,7 +15,7 @@ class AdminService:
         self.__total_dessert = 0
 
     def balance(self):
-        orders = self.db.query(Order).filter_by(OrderStatusID=2).all()
+        orders = self.db.query(Order).filter(Order.OrderStatusID.in_([2, 3])).all()
 
         for order in orders:
             self.__total_amount += order.TotalAmount
@@ -35,7 +35,7 @@ class AdminService:
             self.db.query(OrderLine)
             .join(Order, Order.OrderID == OrderLine.OrderID)
             .join(Product, Product.ProductID == OrderLine.ProductID)
-            .filter(Order.OrderStatusID == 2)
+            .filter(Order.OrderStatusID.in_([2,3]))
             .all()
         )
 
