@@ -58,10 +58,12 @@ function criarItemCarrinho(item) {
 
 function popularCarrinho(order) {
   const container = document.querySelector(".carrinho-itens");
+  const botaoCarrinho = document.getElementById("botao-carrinho");
   container.innerHTML = ""; // Limpa antes de popular
 
   if (!order || !order.itens || order.itens.length === 0) {
     container.innerHTML = `<p class="vazio">Carrinho vazio</p>`;
+    botaoCarrinho.src = "../../static/interface/cloche-atento.png"
     document.querySelector(".texto-rodape p:last-child").textContent =
       "R$ 0,00";
     return;
