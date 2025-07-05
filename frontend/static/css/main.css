@@ -350,7 +350,7 @@ main h1 {
 .texto-rodape p {
     font-family: var(--fonte-textos);
     font-weight: bold;
-    font-size: 2.3vh;  
+    font-size: 2.1vh;  
     margin-left: 1.6vw;  
     text-transform: uppercase;
     color: var(--marrom);
@@ -359,7 +359,7 @@ main h1 {
 .botao-pedir {
     background-color: var(--verde-principal);
     border-radius: 20px;
-    width: 21vw;
+    width: 19.5vw;
     height: 7.5vh;
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
@@ -569,7 +569,7 @@ main h1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 90px;
+    gap: 4.8vw;
     padding-top: 40px;
     font-family: var(--fonte-textos);
     font-weight: var(--peso-textos);
