@@ -101,11 +101,6 @@ class OrderService:
         if order.OrderStatusID != 1:
             raise ValueError("Não é possível modificar um pedido que não está pendente")
 
-    
-        existing_line = next((line for line in order.lines if line.ProductID == product_id), None)
-        if existing_line: #Verifica se o produto já foi adicionado
-            raise ValueError("Este produto já está no pedido")
-
         product = self.db.query(Product).filter_by(ProductID=product_id).first()
         if not product:
             raise ValueError("Produto inválido")

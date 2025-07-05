@@ -104,7 +104,7 @@
         </div>
     </main>
 
-    <div class="carrinho">
+    <div id="order" class="carrinho">
         <div class="carrinho-conteudo">
             <h3>Carrinho</h3>
             <div class="carrinho-itens">
@@ -186,21 +186,21 @@
                         </svg>
                     </button>
                 </div>
-
             </div>
             <div class="carrinho-rodape">
                 <div class="texto-rodape">
                     <p>TOTAL:</p>
                     <p>R$ 200,00</p>
                 </div>
-                <button type="submit" class="botao-pedir">Pedir</button>
+                <button id="cart-button" type="button" class="botao-pedir">Pedir</button>
             </div>
         </div>
     </div>
 
-    <script src="../../static/js/carrinho.js"></script>
-    <script src="../../static/js/script.js"></script>
-    <script src="../../static/js/cardapio.js"></script>
+    <script type="module" src="../../static/js/const.js"></script>
+    <script type="module" src="../../static/js/carrinho.js"></script>
+    <script type="module" src="../../static/js/script.js"></script>
+    <script type="module" src="../../static/js/cardapio.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+import { API_URL, LocalStorageKeys } from "./const.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   const botaoCarrinho = document.getElementById("botao-carrinho");
   const carrinho = document.querySelector(".carrinho");
@@ -17,8 +19,13 @@ async function buscarCarrinho() {
     if (!resposta.ok) {
       throw new Error("Erro ao buscar carrinho");
     }
-    const dados = await resposta.json();
-    popularCarrinho(dados.order); // Passe só o objeto order
+    const cart = await resposta.json();
+
+    if (cart) {
+      localStorage.setItem(LocalStorageKeys.ORDER, JSON.stringify(cart.order));
+    }
+
+    popularCarrinho(cart.order); // Passe só o objeto order
   } catch (error) {
     console.error("Erro ao buscar carrinho: ", error);
     return [];
@@ -73,5 +80,42 @@ function popularCarrinho(order) {
   })}`;
 }
 
+function finishedOrder() {
+  const btn = document.getElementById("cart-button");
+
+  btn.addEventListener("click", async (event) => {});
+}
 
 buscarCarrinho();
+
+const orderBtn = document.getElementById("cart-button");
+
+orderBtn.addEventListener("click", async (event) => {
+  event.preventDefault();
+  const order = JSON.parse(localStorage.getItem(LocalStorageKeys.ORDER));
+
+  if (!order || !order.itens || order.itens.length === 0) {
+    alert("Carrinho vazio");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/pagamento/${order.order_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Erro ao finalizar pedido");
+    }
+
+    localStorage.removeItem(LocalStorageKeys.ORDER);
+    window.location.href = "./cardapio.html";
+  } catch (error) {
+    console.error("Erro ao finalizar pedido: ", error);
+    alert("Erro ao realizar o pedido. Tente novamente.");
+  }
+});

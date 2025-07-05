@@ -22,7 +22,7 @@
         <a href="../menu/index.html">Home</a>
         <a href="../menu/sobre_nos.html">sobre nós</a>
         <a href="../menu/cardapio.html">cardápio</a>
-        <a href="">pedidos</a>
+        <a href="" id="pedidos-menu">pedidos</a>
         <a href="../menu/gerenciamento.html">gerenciamento</a>
         <div class="rodape-menu">
             <button id="botao-carrinho">
@@ -127,13 +127,14 @@
                     <p>TOTAL:</p>
                     <p>R$ 200,00</p>
                 </div>
-                <button type="submit" class="botao-pedir">Pedir</button>
+                <button id="cart-button" type="button" class="botao-pedir">Pedir</button>
             </div>
         </div>
     </div>
 
-    <script src="../../static/js/script.js"></script>
-    <script src="../../static/js/carrinho.js"></script>
+    <script type="module" src="../../static/js/script.js"></script>
+    <script type="module" src="../../static/js/carrinho.js"></script>
+    <script type="module" src="../../static/js/const.js"></script>
 </body>
 
 </html>

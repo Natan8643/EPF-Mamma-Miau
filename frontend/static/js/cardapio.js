@@ -1,3 +1,5 @@
+import { LocalStorageKeys } from "./const.js";
+
 // Simula uma "requisição" ao backend
 async function buscarCardapioDoBackend() {
   try {
@@ -54,37 +56,41 @@ async function buscarPedidoAberto() {
 async function adicionarAoCarrinho(productId) {
   itensPedido[productId] = (itensPedido[productId] || 0) + 1;
 
-  const token = localStorage.getItem("token");
-  if (!pedidoAtual) {
-    // Cria novo pedido com esse produto
-    const resp = await fetch("http://localhost:5000/order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        itens: [{ product_id: productId, quantity: itensPedido[productId] }],
-      }),
-    });
-    if (resp.ok) {
-      const data = await resp.json();
-      pedidoAtual = data.order_id;
+  try {
+    const token = localStorage.getItem(LocalStorageKeys.TOKEN);
+    const order = JSON.parse(localStorage.getItem(LocalStorageKeys.ORDER));
+    if (!order) {
+      // // Cria novo pedido com esse produto
+      const resp = await fetch("http://localhost:5000/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          itens: [{ product_id: productId, quantity: itensPedido[productId] }],
+        }),
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        pedidoAtual = data.order_id;
+      }
+    } else {
+      await fetch(`http://localhost:5000/order/${order.order_id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          product_id: productId,
+          quantity: itensPedido[productId],
+        }),
+      });
     }
-  } else {
-    // Adiciona produto ao pedido aberto
-    const resp = await fetch(`http://localhost:5000/order/${pedidoAtual}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        product_id: productId,
-        quantity: itensPedido[productId],
-      }),
-    });
-    // Não precisa tratar resposta aqui, só incrementa localmente
+  } catch (error) {
+    console.log(error);
+    alert("Produto adicionado ao pedido!");
   }
 }
 
@@ -94,6 +100,7 @@ function ativarBotoesAdd() {
     btn.addEventListener("click", function () {
       // Pega o id do produto do elemento pai (ajuste conforme seu HTML)
       const card = btn.closest(".cardapio-item");
+
       const productId = Number(card.dataset.productId); // Defina data-product-id no HTML!
       adicionarAoCarrinho(productId);
       alert("Produto adicionado ao pedido!");
@@ -139,6 +146,7 @@ function popularCardapio(cardapio) {
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const dados = await buscarCardapioDoBackend();
+
     popularCardapio(dados);
     ativarBotoesAdd();
   } catch (error) {
@@ -162,11 +170,3 @@ async function pedir() {
     alert("Erro ao finalizar pedido");
   }
 }
-
-// Exemplo: vincule ao botão "Pedir" do carrinho
-document.addEventListener("DOMContentLoaded", () => {
-  const botaoPedir = document.querySelector(".botao-pedir");
-  if (botaoPedir) {
-    botaoPedir.addEventListener("click", pedir);
-  }
-});
