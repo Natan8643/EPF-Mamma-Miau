@@ -58,15 +58,17 @@ function criarItemCarrinho(item) {
 
 function popularCarrinho(order) {
   const container = document.querySelector(".carrinho-itens");
-  const botaoCarrinho = document.getElementById("botao-carrinho");
+  const botaoCarrinhoImg = document.querySelector("#botao-carrinho img");
   container.innerHTML = ""; // Limpa antes de popular
 
   if (!order || !order.itens || order.itens.length === 0) {
     container.innerHTML = `<p class="vazio">Carrinho vazio</p>`;
-    botaoCarrinho.src = "../../static/interface/cloche-atento.png"
+    botaoCarrinhoImg.src = "../../static/img/interface/cloche-padrao.png";
     document.querySelector(".texto-rodape p:last-child").textContent =
       "R$ 0,00";
     return;
+  } else {
+    botaoCarrinhoImg.src = "../../static/img/interface/cloche-atento.png"; // Troca para cloche cheio
   }
 
   order.itens.forEach((item) => {
