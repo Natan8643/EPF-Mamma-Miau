@@ -18,7 +18,7 @@ async function buscarPedidosAbertos() {
     const lista = container.querySelector("#andamento-list");
 
     if (dados.opened_orders.length === 0) {
-      lista.innerHTML = "<p>Nenhum pedido em andamento.</p>";
+      lista.innerHTML = `<p class= "nenhum-pedido adm">Nenhum pedido em andamento.</p>`;
       return;
     }
 

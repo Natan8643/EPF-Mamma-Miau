@@ -15,7 +15,7 @@ async function buscarHistoricoPedidos() {
     historicoConteudo.innerHTML = "";
 
     if (!pedidos || pedidos.length === 0) {
-      historicoConteudo.innerHTML = "<p>Nenhum pedido encontrado.</p>";
+      historicoConteudo.innerHTML = `<p class="nenhum-pedido">Nenhum pedido foi realizado.</p>`;
       return;
     }
 
