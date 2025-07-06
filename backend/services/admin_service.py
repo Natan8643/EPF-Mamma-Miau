@@ -19,7 +19,7 @@ class AdminService:
 
         for order in orders:
             self.__total_amount += order.TotalAmount
-            self.__total_expenses += (order.TotalAmount * 40) / 100  # 40% despesas
+            self.__total_expenses += (order.TotalAmount * 30) / 100  # 30% despesas
         
         self.__total_profits = self.__total_amount - self.__total_expenses
 
