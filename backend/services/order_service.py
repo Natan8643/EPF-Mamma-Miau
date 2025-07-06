@@ -49,7 +49,7 @@ class OrderService:
             ]
         }
 
-    def create_order(self, user_id, items: list):
+    def create_order(self, user_id, itens: list):
 
         """
         {
@@ -60,10 +60,10 @@ class OrderService:
 }
         """
 
-        if not items:
+        if not itens:
             raise ValueError("O pedido precisa de pelo menos um item")
         
-        product_ids =[item['product_id'] for item in items]
+        product_ids =[item['product_id'] for item in itens]
         products = self.db.query(Product).filter(Product.ProductID.in_(product_ids)).all() #filtro dos ids de produtos
 
         if len(products) != len(product_ids): 
@@ -78,13 +78,13 @@ class OrderService:
                 5: <Product ProductID=5, Name="Refrigerante", Price=5>
             }
         """
-        for item in items:
+        for item in itens:
             product = product_to_map[item['product_id']] #product_to_map[1] = {1: <Product ProductID=1, Name="Pizza", Price=30>} 
             total_amount += product.Price * item['quantity']
 
         order = Order(UserID=user_id, TotalAmount=total_amount, OrderDate=datetime.utcnow(), OrderStatusID=1)
 
-        for item in items:
+        for item in itens:
             line = OrderLine(
                 ProductID=item['product_id'],
                 Quantity=item['quantity']
