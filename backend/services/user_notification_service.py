@@ -6,6 +6,7 @@ from config import SENDGRID_API_KEY, FROM_EMAIL
 class UserNotificationService(BaseUser):
     def __init__(self, name, email):
         super().__init__(name, email)
+        self.__notifications_sent = 0 
 
     def notify_order_created(self, order_id):
         message = Mail(
@@ -17,6 +18,8 @@ class UserNotificationService(BaseUser):
         try:
             sg = SendGridAPIClient(SENDGRID_API_KEY)
             response = sg.send(message)
+            if response.status_code in [200, 202]:
+                self.__notifications_sent += 1
             return response.status_code
         except Exception as e:
             print(f"Erro ao enviar email: {e}")
