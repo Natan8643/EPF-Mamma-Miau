@@ -88,7 +88,7 @@ function mostrarSidebarPedido(order) {
     </div>
   `;
 
-  sidebar.style.display = "block";
+  sidebar.style.display = "flex";
 
   // Botão para fechar a sidebar
   sidebar.querySelector(".botao-fechar-sidebar").onclick = () => {

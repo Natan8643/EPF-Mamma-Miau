@@ -363,7 +363,7 @@ main h1 {
     color: var(--marrom);
 }
 
-.botao-pedir {
+.botao-pedido {
     background-color: var(--verde-principal);
     border-radius: 20px;
     width: 19.5vw;
@@ -376,12 +376,12 @@ main h1 {
     margin-left: auto;
 }
 
-.botao-pedir:hover {
+.botao-pedido:hover {
     cursor: pointer;
     border: 2px solid var(--marrom);
 }
 
-.botao-pedir:active {
+.botao-pedido:active {
     background-color: #80B155;
 }
 
