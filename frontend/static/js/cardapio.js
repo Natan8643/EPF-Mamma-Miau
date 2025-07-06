@@ -98,12 +98,25 @@ async function adicionarAoCarrinho(productId) {
 
 // Adiciona evento aos botões após popular o cardápio
 function ativarBotoesAdd() {
-  document.querySelectorAll(".item-add").forEach((btn) => {
-    btn.addEventListener("click", function () {
-      // Pega o id do produto do elemento pai (ajuste conforme seu HTML)
-      const card = btn.closest(".cardapio-item");
+  const userRole = localStorage.getItem("userRole");
 
-      const productId = Number(card.dataset.productId); // Defina data-product-id no HTML!
+  // Verifica se não está logado ou é admin
+  if (!userRole || userRole !== "user") {
+    document.querySelectorAll(".item-add").forEach((btn) => {
+      btn.disabled = true;
+      btn.title = "Apenas usuários podem fazer pedidos";
+      btn.style.opacity = "0.5";
+      btn.style.cursor = "not-allowed";
+    });
+    return;
+  }
+
+  // Se for user, ativa os botões normalmente
+  document.querySelectorAll(".item-add").forEach((btn) => {
+    btn.disabled = false;
+    btn.addEventListener("click", function () {
+      const card = btn.closest(".cardapio-item");
+      const productId = Number(card.dataset.productId);
       adicionarAoCarrinho(productId);
       console.log("Produto adicionado ao pedido!");
     });
