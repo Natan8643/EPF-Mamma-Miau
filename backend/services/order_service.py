@@ -5,14 +5,18 @@ from models.order_line import OrderLine
 from datetime import datetime
 from models.user import User
 from services.user_notification_service import UserNotificationService
+from sqlalchemy import or_
 
 class OrderService:
     def __init__(self, db: Session):
         self.db = db
 
     def get_all_orders(self, user_id):
-        orders = self.db.query(Order).filter_by(UserID=user_id).all()
-
+        orders = self.db.query(Order).filter(
+        Order.UserID == user_id,
+        or_(Order.OrderStatusID == 2, Order.OrderStatusID == 3)
+        ).all()
+        
         return [self.serialize_orders(order) for order in orders]
 
     def serialize_orders(self, order):
@@ -20,7 +24,7 @@ class OrderService:
             "order_id": order.OrderID,
             "total_amount": float(order.TotalAmount),
             "order_date": order.OrderDate.strftime('%d/%m/%Y %H:%M'),
-            "status": order.OrderStatusID,
+            "status": order.order_status.name,
         }
 
     def get_order_by_id(self, order_id, user_id):
