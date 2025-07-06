@@ -88,13 +88,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  const loginMenuBtn = document.querySelector(".login-menu")
   const userName = localStorage.getItem("userName");
-  const loginMenuBtn = document.getElementById("login-menu");
 
-  if (userName && loginMenuBtn) {
-    loginMenuBtn.textContent = `Olá, ${userName.split(" ")[0]}!`; // Mostra apenas o primeiro nome
-    document.body.classList.add("logado");
-    loginMenuBtn.onclick = () => {};
+  if (loginMenuBtn) {
+    const token = localStorage.getItem("token");
+    const isLogged = token && !isTokenExpired(token);
+
+    if (userName && isLogged) {
+      loginMenuBtn.textContent = `Olá, ${userName.split(" ")[0]}!`;
+      loginMenuBtn.classList.add("logado");
+
+      loginMenuBtn.addEventListener("click", () => {
+        const logoutBtn = document.querySelector(".logout");
+        if (logoutBtn.style.display === "flex") {
+          logoutBtn.style.animation = "slideOutLogout 0.3s forwards";
+          setTimeout(() => {
+            logoutBtn.style.display = "none";
+          }, 300);
+        } else {
+          logoutBtn.style.display = "flex";
+          logoutBtn.style.animation = "slideInLogout 0.3s forwards";
+        }
+      });
+    } else {
+      // Se não estiver logado, redireciona ao clicar
+      loginMenuBtn.addEventListener("click", () => {
+        window.location.href = "../login/login.html";
+      });
+    }
   }
 
   // Evento de cadastro
@@ -179,4 +201,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+
+
+  const logoutBtn = document.querySelector(".logout button");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("userName");
+      window.location.href = "../login/login.html";
+    });
+  }
+
+
 });

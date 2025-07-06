@@ -134,35 +134,45 @@ main h1 {
     margin-bottom: 4vh;
 }
 
-#login-menu {
-    display: flex;
-    font-family: var(--fonte-textos);
-    font-weight: var(--peso-textos);
-    color: var(--branco-texto);
-    font-size: clamp(16px, 1.5vw, 32px);
-    height: 6.7vh;
-    width: 9.7vw;
-    text-transform: uppercase;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid var(--branco-texto);
-    transition: all 0.3s ease;
+.login-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--fonte-textos);
+  font-weight: bold;
+  color: var(--branco-texto);               
+  font-size: clamp(16px, 1.5vw, 32px);
+  height: 6.7vh;
+  width: 9.7vw;
+  text-transform: uppercase;
+  border: 3px solid var(--branco-texto);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
-#login-menu:hover {
-    cursor: pointer;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+.login-menu:hover {
+  cursor: pointer;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  background-color: var(--branco-texto);   
+  color: var(--verde-principal);                     
+  border-color: var(--branco-texto);
 }
 
-#login-menu:active {
-    border: 2px solid var(--marrom);
-    color: var(--marrom);
+.login-menu:active {
+  color: var(--marrom);
 }
 
-.logado #login-menu {
-  font-size: clamp(16px, 0.9vw, 32px);
-  max-width: 9vw;
+
+.logado {
+  font-size: clamp(16px, 1.1vw, 32px);
+  font-family: var(--fonte-textos);
+  min-width: 11vw;
+  max-width: 11vw;
   white-space: normal;
   word-break: break-word;
   text-align: center;
@@ -196,6 +206,79 @@ main h1 {
     height: 9.5vw;
     margin-top: 21px;
 }
+
+/* logout */
+
+@keyframes slideInLogout {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutLogout {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+.logout {
+    display: none;
+    position: fixed;
+    bottom: 110px;
+    height: 6.7vh;
+    z-index: 5;
+    width: 13.2vw;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.logout button {
+  font-family: var(--fonte-textos);
+  font-weight: bold;
+  font-size: 1.5vw;
+  background-color: var(--branco-background);
+  width: 11vw;
+  height: 100%;
+  border: 3px solid var(--marrom);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--marrom);
+  text-transform: uppercase;
+  transition: 
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.logout button:hover {
+  cursor: pointer;
+  background-color: var(--marrom);
+  color: var(--branco-texto);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+.logout button:active {
+  transform: scale(0.98);
+  background-color: #6a5c55;
+}
+
 
 /* carrinho */
 
