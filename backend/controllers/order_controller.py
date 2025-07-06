@@ -38,19 +38,19 @@ class OrderController():
         @role_required('user')
         def create_order(user_id):
             data = request.json
-            items = data.get('itens')
+            itens = data.get('itens')
 
-            if not items or not isinstance(items, list):
+            if not itens or not isinstance(itens, list):
                 response.status = 400
                 return{"erro":"Lista de itens invalida"}
             
-            print([{"ProductID": item["product_id"], "quantity": item["quantity"]} for item in items])
+            print([{"ProductID": item["product_id"], "quantity": item["quantity"]} for item in itens])
 
             db = SessionLocal()
             order_service = OrderService(db)
 
             try:
-                order = order_service.create_order(user_id=user_id, items=items)
+                order = order_service.create_order(user_id=user_id, itens=itens)
                 return {"message": "Pedido criado", "order_id": order.OrderID}
             except ValueError as ve:
                 response.status = 400

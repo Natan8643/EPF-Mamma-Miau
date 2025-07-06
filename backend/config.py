@@ -4,8 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 
-load_dotenv()
-SQLALCHEMY_DATABASE_URL = os.getenv("DATA_BASE")
+#load_dotenv()
+#SQLALCHEMY_DATABASE_URL = 
 
 
 class Config:
@@ -24,6 +24,7 @@ class Config:
 
     # Outras configurações
 
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:200274@localhost/mamma-miau"
 SECRET_KEY = 'python-api'
 #SQLALCHEMY_DATABASE_URL = 
 
