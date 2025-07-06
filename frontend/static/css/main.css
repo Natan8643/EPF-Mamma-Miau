@@ -949,6 +949,7 @@ main h1 {
     gap: 4.3vw;
 }
 
+
 .historico, .pedido-atual {
     height: 100%;
     background-color: var(--branco-fundo);
@@ -965,6 +966,10 @@ main h1 {
     font-family: var(--fonte-textos);
     font-weight: bold;
     margin: 1.1vh auto 0 1vw;
+}
+
+.pedido-atual {
+    display: none;
 }
 
 .historico-conteudo {
