@@ -56,16 +56,6 @@ CREATE TABLE "OrderStatus" (
     )
 );
 
-CREATE TABLE "Payment" (
-    "PaymentID" int   NOT NULL,
-    "OrderID" int   NOT NULL,
-    "PaymentMethod" string   NOT NULL,
-    "Amount" money   NOT NULL,
-    "PaidAt" datetime   NOT NULL,
-    CONSTRAINT "pk_Payment" PRIMARY KEY (
-        "PaymentID"
-     )
-);
 
 ALTER TABLE "Order" ADD CONSTRAINT "fk_Order_UserID" FOREIGN KEY("UserID")
 REFERENCES "User" ("UserID");
@@ -78,9 +68,6 @@ REFERENCES "Order" ("OrderID");
 
 ALTER TABLE "OrderLine" ADD CONSTRAINT "fk_OrderLine_ProductID" FOREIGN KEY("ProductID")
 REFERENCES "Product" ("ProductID");
-
-ALTER TABLE "Payment" ADD CONSTRAINT "fk_Payment_OrderID" FOREIGN KEY("OrderID")
-REFERENCES "Order" ("OrderID");
 
 CREATE INDEX "idx_User_Name"
 ON "User" ("Name");

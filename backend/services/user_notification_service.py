@@ -1,7 +1,7 @@
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from models.base_user import BaseUser
-from config import SENDGRID_API_KEY, FROM_EMAIL
+from config import SENDGRID_API_KEY, FROM_EMAIL, ORDER_CREATED_TEMPLATE_ID
 
 class UserNotificationService(BaseUser):
     def __init__(self, name, email):
@@ -12,9 +12,12 @@ class UserNotificationService(BaseUser):
         message = Mail(
             from_email=FROM_EMAIL,
             to_emails=self.email,
-            subject=f'Pedido {order_id} criado!',
-            html_content=f'<strong>Olá {self.name}, seu pedido {order_id} acaba de ser criado!!!</strong>'
         )
+        message.template_id = ORDER_CREATED_TEMPLATE_ID
+        message.dynamic_template_data = {
+            'name': self.name,
+            'order_id': order_id
+        }
         try:
             sg = SendGridAPIClient(SENDGRID_API_KEY)
             response = sg.send(message)
