@@ -1,32 +1,27 @@
-# Projeto Template: POO com Python + Bottle + JSON
+# Mamma Miau - Sistema de Pedidos Online
 
-Este é um projeto de template educacional voltado para o ensino de **Programação Orientada a Objetos (POO)** do Prof. Lucas Boaventura, Universidade de Brasília (UnB).
-
-Utiliza o microframework **Bottle**. Ideal para uso em disciplinas introdutórias de Engenharia de Software ou Ciência da Computação.
-
-## 💡 Objetivo
-
-Fornecer uma base simples, extensível e didática para construção de aplicações web orientadas a objetos com aplicações WEB em Python, ideal para trabalhos finais ou exercícios práticos.
+Este projeto é um sistema web completo para restaurantes, desenvolvido como base didática para ensino de **Programação Orientada a Objetos (POO)** e arquitetura web moderna, utilizando **Python**, **Bottle**, **SQLAlchemy** e **PostgreSQL** no backend, e **HTML/CSS/JS** puro no frontend.
 
 ---
 
 ## 🗂 Estrutura de Pastas
 
 ```bash
-EPF-OO/
+EPF-Mamma-Miau/
 ├── backend/
-│   ├── app.py                # Ponto de entrada do sistema
-│   ├── config.py             # Configurações e caminhos do projeto
+│   ├── app.py                # Ponto de entrada do backend
+│   ├── config.py             # Configurações do projeto
 │   ├── main.py               # Inicialização da aplicação
-│   ├── requirements.txt      # Dependências do projeto
-│   ├── controllers/          # Controladores e rotas
-│   ├── models/               # Definição das entidades (ex: User)
-│   ├── services/             # Lógica de persistência (JSON)
-│   ├── data/                 # Arquivos JSON de dados
-│   └── .vscode/              # Configurações opcionais do VS Code
+│   ├── requirements.txt      # Dependências do backend
+│   ├── controllers/          # Rotas e lógica de controle
+│   ├── models/               # Definição das entidades (ORM)
+│   ├── services/             # Lógica de negócio e persistência
+│   ├── data/                 # Dados locais (opcional)
+│   └── .vscode/              # Configurações do VS Code
 ├── frontend/
 │   ├── static/               # CSS, JS e imagens
-│   └── views/                # Arquivos HTML (Bottle Templating)
+│   └── views/                # Arquivos HTML
+├── docker-compose.yml        # Configuração do banco de dados PostgreSQL
 ├── README.md                 # Este arquivo
 ```
 
@@ -34,90 +29,96 @@ EPF-OO/
 
 ## 📁 Descrição das Pastas
 
-### `controllers/`
+### `backend/`
 
-Contém as classes responsáveis por lidar com as rotas da aplicação. Exemplos:
+- **app.py / main.py**: Inicialização do servidor Bottle.
+- **config.py**: Configurações globais do projeto.
+- **controllers/**: Rotas da aplicação (ex: `order_controller.py`, `user_controller.py`).
+- **models/**: Classes ORM (ex: `User`, `Order`, `Product`).
+- **services/**: Lógica de negócio, manipulação de dados e integrações.
+- **data/**: Arquivos de dados locais (opcional).
 
-- `user_controller.py`: rotas para listagem, adição, edição e remoção de usuários.
-- `base_controller.py`: classe base com utilitários comuns.
+### `frontend/`
 
-### `models/`
+- **static/**:
+  - `css/`: Estilos (ex: `main.css`, `reset.css`)
+  - `js/`: Scripts (ex: `cardapio.js`, `carrinho.js`)
+  - `img/`: Imagens do sistema
+- **views/**:
+  - `menu/`: Páginas HTML do sistema (ex: `cardapio.html`, `pedidos-user.html`)
 
-Define as classes que representam os dados da aplicação. Exemplo:
+### `docker-compose.yml`
 
-- `user.py`: classe `User`, com atributos como `id`, `name`, `email`, etc.
-
-### `services/`
-
-Responsável por salvar, carregar e manipular dados usando arquivos JSON. Exemplo:
-
-- `user_service.py`: contém métodos como `get_all`, `add_user`, `delete_user`.
-
-### `views/`
-
-Contém os arquivos `.tpl` utilizados pelo Bottle como páginas HTML:
-
-- `layout.tpl`: estrutura base com navegação e bloco `content`.
-- `users.tpl`: lista os usuários.
-- `user_form.tpl`: formulário para adicionar/editar usuário.
-
-### `static/`
-
-Arquivos estáticos como:
-
-- `css/style.css`: estilos básicos.
-- `js/main.js`: scripts JS opcionais.
-- `img/BottleLogo.png`: exemplo de imagem.
-
-### `data/`
-
-Armazena os arquivos `.json` que simulam o banco de dados:
-
-- `users.json`: onde os dados dos usuários são persistidos.
+- Sobe um container PostgreSQL para persistência dos dados.
 
 ---
 
 ## ▶️ Como Executar
 
-1. Crie o ambiente virtual na pasta fora do seu projeto:
+1. **Suba o banco de dados (opcional, se for usar PostgreSQL):**
+
+```bash
+docker-compose up -d
+```
+
+2. **Crie e ative o ambiente virtual:**
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
-venv\\Scripts\\activate     # Windows
+venv\Scripts\activate     # Windows
 ```
 
-2. Entre dentro do seu projeto criado a partir do template e instale as dependências:
+3. **Instale as dependências:**
 
 ```bash
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 ```
 
-3. Rode a aplicação:
+4. **Rode o backend:**
 
 ```bash
+cd backend
 python main.py
 ```
 
-4. Accese sua aplicação no navegador em: [http://localhost:8080](http://localhost:8080)
+5. **Abra o frontend:**
+
+Abra o arquivo HTML em `frontend/views/menu/index.html` no navegador .
+
+---
+
+## 💡 Funcionalidades
+
+- Cadastro e login de usuários
+- Visualização de cardápio
+- Adição e remoção de itens no carrinho
+- Finalização de pedidos
+- Histórico de pedidos do usuário
+- Painel administrativo para gerenciamento de pedidos e lucros
+- Integração com banco de dados PostgreSQL via SQLAlchemy
+- Interface responsiva e moderna
 
 ---
 
 ## ✍️ Personalização
 
-Para adicionar novos modelos (ex: Atividades):
+Para adicionar novos modelos ou funcionalidades:
 
 1. Crie a classe no diretório **models/**.
-
-2. Crie o service correspondente para manipulação do JSON.
-
-3. Crie o controller com as rotas.
-
-4. Crie as views .tpl associadas.
+2. Implemente o service correspondente em **services/**.
+3. Crie ou edite o controller em **controllers/**.
+4. Adicione ou edite as views HTML em **frontend/views/**.
+5. Adapte os scripts JS em **frontend/static/js/** conforme necessário.
 
 ---
 
 ## 🧠 Autor e Licença
 
-Projeto desenvolvido como template didático para disciplinas de Programação Orientada a Objetos, baseado no [BMVC](https://github.com/hgmachine/bmvc_start_from_this).
+Feito por:
+
+[Natan França](https://github.com/Natan8643)
+
+[Kelyton de Lucas](https://github.com/KelytonSantos)
+
 Você pode reutilizar, modificar e compartilhar livremente.

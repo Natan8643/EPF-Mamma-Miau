@@ -3,6 +3,7 @@ from models.order import Order
 from models.product import Product
 from models.order_line import OrderLine
 from datetime import datetime
+import pytz
 from models.user import User
 from services.user_notification_service import UserNotificationService
 from sqlalchemy import or_
@@ -23,7 +24,7 @@ class OrderService:
         return {
             "order_id": order.OrderID,
             "total_amount": float(order.TotalAmount),
-            "order_date": order.OrderDate.strftime('%d/%m/%Y %H:%M'),
+            "order_date": order.OrderDate.astimezone(pytz.timezone("America/Sao_Paulo")).strftime('%d/%m/%Y %H:%M'),
             "status": order.order_status.name,
         }
 
@@ -82,8 +83,14 @@ class OrderService:
             product = product_to_map[item['product_id']] #product_to_map[1] = {1: <Product ProductID=1, Name="Pizza", Price=30>} 
             total_amount += product.Price * item['quantity']
 
-        order = Order(UserID=user_id, TotalAmount=total_amount, OrderDate=datetime.utcnow(), OrderStatusID=1)
+        order = Order(
+            UserID=user_id,
+            TotalAmount=total_amount,
+            OrderDate=datetime.now(pytz.timezone("America/Sao_Paulo")),
+            OrderStatusID=1
+        )
 
+        print(f'{order.OrderDate}')
         for item in itens:
             line = OrderLine(
                 ProductID=item['product_id'],
